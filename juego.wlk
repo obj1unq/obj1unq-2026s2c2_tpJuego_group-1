@@ -192,7 +192,7 @@ object pico {
 class Madera {
   method image() = "madera.png"
   
-  method position() = game.at(6,7)
+  method position() = game.at(1,1)
 }
 
 class Agua {
@@ -203,4 +203,3 @@ class Agua {
   const property sedQueQuita = 5
 }
 
-const arbol1 = new Arbol()

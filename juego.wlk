@@ -156,7 +156,7 @@ object palmera3 {
 class Arbol {
   var property estado = sinTalar
   //por ahora esto no es necesario, pero eventualmente podriamos hacer esto: const property maderaQueDa = 3
-  var property position = game.at(6, 7)
+  var property position = game.at(10, 9)
   
   method image() = ("arbol_" + estado.image()) + ".png"
 }
@@ -169,18 +169,12 @@ object sinTalar {
   method image() = "arbol_sinTalar.png"
 }
 
-class CharcoDeAgua {
-  const property sedQueQuita = 5
-  
-  method image() = "agua.png"
-  
-  method position() = game.at(5, 4)
-}
+
 
 object bote {
   method image() = "bote.png"
   
-  method position() = game.at(9, 10)
+  method position() = game.at(1, 2)
 }
 
 object serrucho {
@@ -192,19 +186,21 @@ object serrucho {
 object pico {
   method image() = "pico.png"
   
-  method position() = game.at(9, 10)
+  method position() = game.at(3, 2)
 }
 
-object madera {
+class Madera {
   method image() = "madera.png"
   
-  method position() = game.at(7, 10)
+  method position() = game.at(6,7)
 }
 
-object agua {
+class Agua {
   method image() = "agua.png"
   
-  method position() = game.at(9, 10)
+  method position() = game.at(2, 3)
+
+  const property sedQueQuita = 5
 }
 
 const arbol1 = new Arbol()

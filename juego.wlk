@@ -126,7 +126,7 @@ object telaDeAraña {
 object palmera1 {
   method image() = "palmera1.png"
   
-  method position() = game.center()
+  method position() = game.at(5,6)
   
   method interactuar(personaje) {
     personaje.recogerMadera(3) // a implementar
@@ -134,9 +134,9 @@ object palmera1 {
 }
 
 object palmera2 {
-  method image() = "palmera.png"
+  method image() = "palmera1.png"
   
-  method position() = game.at(5, 0)
+  method position() = game.at(5, 1)
   
   method interactuar(personaje) {
     personaje.recogerMadera(1) // a implementar
@@ -144,9 +144,9 @@ object palmera2 {
 }
 
 object palmera3 {
-  method image() = "palmera.png"
+  method image() = "palmera1.png"
   
-  method position() = game.at(9, 10)
+  method position() = game.at(3, 3)
   
   method interactuar(personaje) {
     personaje.recogerMadera(5) // a implementar
@@ -186,7 +186,7 @@ object bote {
 object serrucho {
   method image() = "serrucho.png"
   
-  method position() = game.at(9, 10)
+  method position() = game.at(8, 4)
 }
 
 object pico {
@@ -198,7 +198,7 @@ object pico {
 object madera {
   method image() = "madera.png"
   
-  method position() = game.at(9, 10)
+  method position() = game.at(7, 10)
 }
 
 object agua {

@@ -32,6 +32,7 @@ program PepitaGame {
 	game.addVisual(palmera3)
 	game.addVisual(madera)
 	game.addVisual(serrucho)
+	
 	game.start()
 	//para mi aca va un collide donde cuando el personaje colisiona con un charco de agua, y aprieta la letra "a", se llama al metodo tomarAgua()
 }

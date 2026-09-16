@@ -31,3 +31,21 @@ describe "Vida del Jugador" {
   }
 
 }
+
+describe "Logica de agarrar Objeto" {
+
+  method initialize() {
+    config.configurarEscenario()
+  }
+
+  test "Sacar Vida al jugador" {
+    jugador.descontarVida(50)
+    assert.equals(50, jugador.vidaActualmente())
+    jugador.descontarVida(20)
+    assert.equals(30, jugador.vidaActualmente())
+    jugador.descontarVida(40)
+    assert.equals(0, jugador.vidaActualmente())
+    assert.notThat(game.hasVisual(jugador))
+  }
+
+}

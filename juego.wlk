@@ -110,9 +110,9 @@ object araña {
 }
 
 object telaDeAraña {
-  method image() = "telaAraña.png"
+  method image() = "telaArana.png"
   
-  method position() = game.at(10, 5)
+  method position() = game.at(2,2)
   
   //para mi esto lo tiene que hacer el personaje:
   method interactuar(personaje) {

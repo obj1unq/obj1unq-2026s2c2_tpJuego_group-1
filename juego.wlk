@@ -1,9 +1,10 @@
 import wollok.game.*
 
-object pepita {
+object jugador {
   var property position = game.center()
+
   method image() {
-    return "pepita.png"
+    return "Jugador.png"
   }
 
 }

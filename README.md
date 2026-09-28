@@ -1,4 +1,4 @@
-# Nombre del juego (<- borrar y completar)
+# La Isla
 
 En una isla lejana y aislada de todo, el protagonista sufre un accidente que lo deja varado y sin posibilidad de regresar.
 

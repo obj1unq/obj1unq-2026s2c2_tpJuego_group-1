@@ -18,7 +18,6 @@ Ahora deberá sobrevivir, explorar la isla y encontrar una forma de escapar, mie
 
 (Escribirlas)
 
-
 ## Otros
 
 - Curso/Facultad: Universidad Nacional de Quilmes

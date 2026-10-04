@@ -1,27 +1,25 @@
 import wollok.game.*
-
 import juego.jugador
 import juego.araña
 
 object config {
-
 	method configurarEscenario() {
 		game.title("TheIsla")
 		game.height(10)
 		game.width(10)
 	}
-	
 }
-program PepitaGame {
 
+program PepitaGame {
 	config.configurarEscenario()
 	
-	keyboard.left().onPressDo({araña.mover()})
-	keyboard.right().onPressDo({araña.mover()})
-	keyboard.up().onPressDo({araña.mover()})
-	keyboard.down().onPressDo({araña.mover()})
-
+	keyboard.left().onPressDo({ araña.mover() })
+	keyboard.right().onPressDo({ araña.mover() })
+	keyboard.up().onPressDo({ araña.mover() })
+	keyboard.down().onPressDo({ araña.mover() })
+	
 	game.addVisualCharacter(jugador)
 	game.addVisual(araña)
 	game.start()
+	//para mi aca va un collide donde cuando el personaje colisiona con un charco de agua, y aprieta la letra "a", se llama al metodo tomarAgua()
 }

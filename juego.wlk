@@ -29,8 +29,19 @@ object jugador {
     game.removeVisual(self)
   }
   
+  //para mi esto no va porque lo cambie abajo en el metodo tomarAgua()
   method hidratarse(cantidad) {
     sed -= cantidad
+  }
+  
+  method tomarAgua() {
+    self.validarTomarAgua()
+    sed = -5
+  }
+  
+  method validarTomarAgua() {
+    
+    //verificar que este en la posicion del charco de agua
   }
   
   method image() = "Jugador.png"
@@ -116,26 +127,38 @@ class CharcoDeAgua {
   const property sedQueQuita = 5
   
   method image() = "agua.png"
+  
+  method position() = game.at(5, 4)
 }
 
 object bote {
   method image() = "bote.png"
+  
+  method position() = game.at(9, 10)
 }
 
 object serrucho {
   method image() = "serrucho.png"
+  
+  method position() = game.at(9, 10)
 }
 
 object pico {
   method image() = "pico.png"
+  
+  method position() = game.at(9, 10)
 }
 
 object madera {
   method image() = "madera.png"
+  
+  method position() = game.at(9, 10)
 }
 
 object agua {
   method image() = "agua.png"
+  
+  method position() = game.at(9, 10)
 }
 
 const arbol1 = new Arbol()

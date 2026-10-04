@@ -29,6 +29,7 @@ object jugador {
     game.removeVisual(self)
   }
   
+  //
   //para mi esto no va porque lo cambie abajo en el metodo tomarAgua()
   method hidratarse(cantidad) {
     sed -= cantidad

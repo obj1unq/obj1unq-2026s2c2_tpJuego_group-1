@@ -1,7 +1,6 @@
 import wollok.game.*
 
 object jugador {
-  //hola
   var vidaActualmente = 100
   var sed = 0 //a corregir
   var armadura = 0 //a corregir

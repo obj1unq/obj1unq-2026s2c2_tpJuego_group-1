@@ -1,14 +1,33 @@
-import juego.pepita
+import juego.jugador
 import mainJuego.config
+//import wollok.game.*
 
-describe "group of tests for pepita" {
+describe "group of tests for player" {
 
   method initialize() {
     config.configurarEscenario()
   }
-  test "pepita tiene posicion e imagen" {
-    assert.equals(game.at(5,5), pepita.position())
-    assert.equals("pepita.png", pepita.image())
+  test "jugador tiene posicion e imagen" {
+    assert.equals(game.at(5,5), jugador.position())
+    assert.equals("Jugador.png", jugador.image())
+  }
+
+}
+
+describe "Vida del Jugador" {
+
+  method initialize() {
+    config.configurarEscenario()
+  }
+
+  test "Sacar Vida al jugador" {
+    jugador.descontarVida(50)
+    assert.equals(50, jugador.vidaActualmente())
+    jugador.descontarVida(20)
+    assert.equals(30, jugador.vidaActualmente())
+    jugador.descontarVida(40)
+    assert.equals(0, jugador.vidaActualmente())
+    assert.notThat(game.hasVisual(jugador))
   }
 
 }

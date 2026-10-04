@@ -1,11 +1,11 @@
 import wollok.game.*
 
-import juego.pepita
+import juego.jugador
 
 object config {
 
 	method configurarEscenario() {
-		game.title("Pepita")
+		game.title("TheIsla")
 		game.height(10)
 		game.width(10)
 	}
@@ -14,7 +14,7 @@ program PepitaGame {
 
 	config.configurarEscenario()
 	
-	game.addVisualCharacter(pepita)
+	game.addVisualCharacter(jugador)
 
 	game.start()
 }

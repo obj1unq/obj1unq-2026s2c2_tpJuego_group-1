@@ -12,7 +12,6 @@ object jugador {
   
   method textColor() = "FF0000FF"
   
-  //
   method descontarVida(cantidad) {
     if (vidaActualmente < cantidad) {
       self.morir()

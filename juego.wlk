@@ -2,9 +2,8 @@ import wollok.game.*
 
 object jugador {
   var vidaActualmente = 100
-  var sed = 0 //a corregir
-  var armadura = 0 //a corregir
-  var inventario = [] //a corregir 
+  var nivelDeAgua = 20
+  const inventario = []
   var property position = game.center()
   
   //metodos de prueba
@@ -29,15 +28,9 @@ object jugador {
     game.removeVisual(self)
   }
   
-  //
-  //para mi esto no va porque lo cambie abajo en el metodo tomarAgua()
-  method hidratarse(cantidad) {
-    sed -= cantidad
-  }
-  
   method tomarAgua() {
     self.validarTomarAgua()
-    sed = -5
+    nivelDeAgua = 5
   }
   
   method validarTomarAgua() {

@@ -17,7 +17,17 @@ program PepitaGame {
 	keyboard.right().onPressDo({ araña.mover() })
 	keyboard.up().onPressDo({ araña.mover() })
 	keyboard.down().onPressDo({ araña.mover() })
-	
+	//si el personaje colisiona con un enemigo, llamar al metodo colisionaCon(enemigo)
+	//ej: si colisiona con araña, llamar a colisionaCon(araña)
+	//y eso hace que se llame a ese metodo en personaje que lo que hace es que
+	//reduce la cantidad de vida del personaje en funcion a la cantidad de daño que aporta el enemigo en cuestion
+	//es un metodo reutilizable para cualquier otro enemigo, ya que dañoQueAporta() es un mensaje polimorfico
+	//que tienen todos los enemigos
+	//no se si es la unica solucion, pero creo que seria mejor que el personaje reaccione a los enemigos de esta forma
+	//en vez de que los enemigos reaccionen a el
+	//por ejemplo, si un enemigo le tira una lanza ponele, el metodo se llamaria si el personaje colisiona con la lanza que le tiro el enemigo en cuestion
+	//por ende, siempre tenemos al personaje reaccionando a los enemigos y no al reves donde el enemigo llamaria a un metodo para quitarle vida al personaje
+	//NO BORRAR ESTE COMENTARIO, ES PARA DESPUES MOSTRARLO EN CLASE
 	game.addVisualCharacter(jugador)
 	game.addVisual(araña)
 	game.start()

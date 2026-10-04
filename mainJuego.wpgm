@@ -1,6 +1,7 @@
 import wollok.game.*
 
 import juego.jugador
+import juego.araña
 
 object config {
 
@@ -9,12 +10,13 @@ object config {
 		game.height(10)
 		game.width(10)
 	}
+	
 }
 program PepitaGame {
 
 	config.configurarEscenario()
 	
 	game.addVisualCharacter(jugador)
-
+	game.addVisual(araña)
 	game.start()
 }

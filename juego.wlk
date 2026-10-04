@@ -25,9 +25,7 @@ object jugador {
   method agregarAlInventario(item) {
     inventario.add(item)
   }
-  
-  method x() = position.x()
-  
+
   method morir() {
     vidaActualmente = 0
     game.removeVisual(self)
@@ -43,17 +41,16 @@ object jugador {
 }
 
 object araña{
-    const objetivo = jugador
+    var property position = game.at(10,5)
     method image() = "Araña.png"
-    
-
-    method position() {
-        return game.at(self.x(),3)
+  
+    method mover(){
+       if (position.x() == 10) {
+            position.right(1)
+        } else if (position.x() == 0) {
+            position.left(1)
+        }
     }
-    method x() {
-        return objetivo.x() + 1
-    }
-
     method interactuar(personaje) {
         personaje.descontarVida(10)
     }
@@ -62,9 +59,32 @@ object araña{
 object telaDeAraña{
     method image() = "telaAraña.png"
     method position() {
-        return game.at(10,3)
+        return game.at(10,5)
     }
     method interactuar(personaje) {
         personaje.recogerHilo(5)// a implementar
+    }
+}
+
+object palmera1{
+  method image() = "palmera.png"
+  method position() = game.at(0,0)
+    method interactuar(personaje) {
+        personaje.recogerMadera(3)// a implementar
+    }
+}
+object palmera2{
+  method image() = "palmera.png"
+  method position() = game.at(5,0)
+    method interactuar(personaje) {
+        personaje.recogerMadera(1)// a implementar
+    }
+}
+
+object palmera3{
+  method image() = "palmera.png"
+  method position() = game.at(9,10)
+    method interactuar(personaje) {
+        personaje.recogerMadera(5)// a implementar
     }
 }

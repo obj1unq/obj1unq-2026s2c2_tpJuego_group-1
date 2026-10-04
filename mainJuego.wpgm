@@ -16,6 +16,11 @@ program PepitaGame {
 
 	config.configurarEscenario()
 	
+	keyboard.left().onPressDo({araña.mover()})
+	keyboard.right().onPressDo({araña.mover()})
+	keyboard.up().onPressDo({araña.mover()})
+	keyboard.down().onPressDo({araña.mover()})
+
 	game.addVisualCharacter(jugador)
 	game.addVisual(araña)
 	game.start()

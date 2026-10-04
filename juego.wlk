@@ -28,8 +28,12 @@ object jugador {
     inventario.add(item)
   }
   
+  method verificarVida() {
+    if (vidaActualmente <= 0) self.morir()
+  }
+  
   method morir() {
-    vidaActualmente <= 0
+    vidaActualmente = 0
     game.removeVisual(self)
   }
   
@@ -62,6 +66,16 @@ object jugador {
   method validarAgarrarHilo() {
     
     //verifica que este en la tela de araña
+  }
+  
+  method agarrarSerrucho() {
+    self.validarAgarrarSerrucho()
+    inventario.add(serrucho)
+  }
+  
+  method validarAgarrarSerrucho() {
+    
+    //if(not inventario.contains(serrucho) and )
   }
   
   method colisionaCon(enemigo) {

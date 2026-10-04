@@ -70,7 +70,9 @@ object telaDeAraña {
     personaje.recogerHilo(5) // a implementar
   }
 }
+//para mi los objetos palmeras deberian ser instancias de la clase Arbol que defini mas abajo,
 
+//no objetos individuales como esta aca:
 object palmera1 {
   method image() = "palmera.png"
   

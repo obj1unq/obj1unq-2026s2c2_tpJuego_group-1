@@ -13,10 +13,7 @@ object config {
 program PepitaGame {
 	config.configurarEscenario()
 	
-	keyboard.left().onPressDo({ araña.mover() })
-	keyboard.right().onPressDo({ araña.mover() })
-	keyboard.up().onPressDo({ araña.mover() })
-	keyboard.down().onPressDo({ araña.mover() })
+	game.onTick(1000, "araña", {=> araña.mover()})
 	//si el personaje colisiona con un enemigo, llamar al metodo colisionaCon(enemigo)
 	//ej: si colisiona con araña, llamar a colisionaCon(araña)
 	//y eso hace que se llame a ese metodo en personaje que lo que hace es que

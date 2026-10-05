@@ -88,9 +88,9 @@ object jugador {
 }
 
 object araña {
-  var property position = game.at(10, 5)
+  var property position = game.at(1,1)
   
-  method image() = "Araña.png"
+  method image() = "arana.png"
   
   method mover() {
     if (position.x() == 10) {

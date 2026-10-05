@@ -88,7 +88,7 @@ object jugador {
 }
 
 object araña {
-  var property position = game.at(1,1)
+  var property position = game.at(1, 1)
   
   method image() = "arana.png"
   
@@ -124,9 +124,9 @@ object telaDeAraña {
 //por otro lado, el metodo para agarrar madera es parte de personaje, no del arbol en si
 //no objetos individuales como esta aca:
 object palmera1 {
-  method image() = "palmera.png"
+  method image() = "palmera1.png"
   
-  method position() = game.at(0, 0)
+  method position() = game.center()
   
   method interactuar(personaje) {
     personaje.recogerMadera(3) // a implementar

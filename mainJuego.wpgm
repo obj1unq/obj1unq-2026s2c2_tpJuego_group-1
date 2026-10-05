@@ -1,6 +1,5 @@
 import wollok.game.*
-import juego.jugador
-import juego.araña
+import juego.*
 
 object config {
 	method configurarEscenario() {
@@ -27,6 +26,7 @@ program PepitaGame {
 	//NO BORRAR ESTE COMENTARIO, ES PARA DESPUES MOSTRARLO EN CLASE
 	game.addVisualCharacter(jugador)
 	game.addVisual(araña)
+	game.addVisual(palmera1)
 	game.start()
 	//para mi aca va un collide donde cuando el personaje colisiona con un charco de agua, y aprieta la letra "a", se llama al metodo tomarAgua()
 }

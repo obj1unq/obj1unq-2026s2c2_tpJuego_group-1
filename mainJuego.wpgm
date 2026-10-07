@@ -35,6 +35,19 @@ program PepitaGame {
 	
 	game.addVisual(palmera1)
 	game.addVisual(telaDeAraña)
+	//game.addVisualCharacter(jugador)
+	//game.addVisual(araña)
+	//game.onCollideDo(jugador, {araña => jugador.descontarVida(araña.dañoQueCausa())})
+	//game.addVisual(palmera1)
+	//game.addVisual(new Arbol())
+	//game.addVisual(palmera3)
+	//game.addVisual(palmera2)
+	game.addVisual(new Madera())
+	//game.addVisual(new Agua())
+	//game.addVisual(bote)
+	//game.addVisual(pico)
+	//game.addVisual(serrucho)
+
 	game.start()
 	//para mi aca va un collide donde cuando el personaje colisiona con un charco de agua, y aprieta la letra "a", se llama al metodo tomarAgua()
 }

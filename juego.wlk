@@ -11,7 +11,7 @@ object jugador {
   method madera() = madera
   
   //metodos de prueba
-  method text() = vidaActualmente.toString()
+  method text() = position.y().toString() //vidaActualmente.toString()
   method hiloActual() {
     return hilo
   }
@@ -39,17 +39,6 @@ object jugador {
     vidaActualmente = 0
     game.removeVisual(self)
   }
-  
-  method tomarAgua() {
-    self.validarTomarAgua()
-    nivelDeAgua += 5
-  }
-  
-  method validarTomarAgua() {
-    
-    //verificar que este en la posicion del charco de agua
-  }
-  
 
   
   method agregarHilo() {
@@ -60,14 +49,9 @@ object jugador {
     return inventario
   }
   
-  method agarrarSerrucho() {
-    self.validarAgarrarSerrucho()
-    inventario.add(serrucho)
-  }
-  
-  method validarAgarrarSerrucho() {
-    
-    //if(not inventario.contains(serrucho) and )
+
+  method mover(direccion) {
+    position = direccion.siguiente(position)
   }
   
   method colisionaCon(enemigo) {
@@ -193,5 +177,54 @@ class Agua {
   method position() = game.at(2, 3)
 
   const property sedQueQuita = 5
+}
+
+//direcciones
+object izquierda {
+
+    method siguiente(posicion) {
+        self.validarSiguiente(posicion)
+        return game.at(posicion.x() - 1 , posicion.y())
+    }
+    method validarSiguiente(posicion) {
+        if(posicion.x() == 0) {
+            self.error('No se puede mover a la izquierda')
+        }
+    }
+}
+object derecha {
+    method siguiente(posicion) {
+        self.validarSiguiente(posicion)
+        return game.at(posicion.x() + 1 , posicion.y())
+    }
+    method validarSiguiente(posicion) {
+        if(posicion.x() == game.width() - 1 ) {
+          self.error("No se puede mover a la derecha")
+        }
+    }
+}
+object arriba {
+    method siguiente(posicion) {
+        self.validarSiguiente(posicion)
+        return game.at(posicion.x(), (posicion.y() + 1) )
+    }
+    method validarSiguiente(posicion) {
+        if(posicion.y() == game.height() - 3) {
+          self.error('No se puede mover a la arriba')
+        }
+    }
+}
+object abajo {
+    method siguiente(posicion) {
+        self.validarSiguiente(posicion)
+        return game.at(posicion.x(), (posicion.y() - 1))
+    }
+    
+    method validarSiguiente(posicion) {
+        if(posicion.y() == 0 ) {
+            self.error('No se puede mover abajo')
+        }
+    }
+
 }
 

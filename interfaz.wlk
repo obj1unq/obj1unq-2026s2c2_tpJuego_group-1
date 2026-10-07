@@ -4,7 +4,7 @@ import juego.jugador
 object interfaz {
 
     
-  var property position = game.at(0,10)
+  var property position = game.at(0,11)
 
   method image() {
     return "interfaz.png"
@@ -17,7 +17,7 @@ object interfaz {
 
 object personajeVida {
 
-  var property position = game.at(7, 10) 
+  var property position = game.at(7, 12) 
 
   method text() {
     return  (jugador.vidaActualmente()).toString()

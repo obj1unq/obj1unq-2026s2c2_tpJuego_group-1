@@ -89,16 +89,18 @@ object jugador {
 
 object araña {
   var property position = game.at(1, 1)
-  
+  var direccionAMover = true
+
   method image() = "arana.png"
   
   method mover() {
-    if (position.x() == 10) {
-      position.right(1)
-    } else {
-      if (position.x() == 0) position.left(1)
-    }
+     if (self.direccion()){ position  = position.right(1)} else { position  = position.left(1)}
   }
+  method direccion(){
+    return if (position.x() >= game.width()){direccionAMover = false} else (position.x() <= 0) {direccionAMover = true}
+  }
+  
+
   
   //esto para mi lo tiene que hacer el personaje. el objeto solo existe y si el personaje interactua con el, ahi se activa un metodo del personaje
   method interactuar(personaje) {

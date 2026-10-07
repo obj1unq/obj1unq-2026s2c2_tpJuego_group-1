@@ -111,7 +111,6 @@ object araña {
   method dañoQueCausa() = 10
 }
 object derecha {
-
   method mover(personaje) {
     return personaje.position().right(1)
   }
@@ -120,7 +119,6 @@ object derecha {
   }
 }
 object izquierda {
-  
   method mover(personaje) {
     return personaje.position().left(1)
   }

@@ -30,6 +30,8 @@ program PepitaGame {
 
 	game.onCollideDo(telaDeAraña, {jugador => jugador.agregarAlInventario(telaDeAraña)})
 	game.onCollideDo(telaDeAraña, {jugador => game.removeVisual(telaDeAraña)})
+	game.onCollideDo(telaDeAraña, {jugador => jugador.agregarHilo()})
+	
 	
 	game.addVisual(palmera1)
 	game.addVisual(telaDeAraña)

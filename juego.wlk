@@ -12,6 +12,9 @@ object jugador {
   
   //metodos de prueba
   method text() = vidaActualmente.toString()
+  method hiloActual() {
+    return hilo
+  }
   
   method textColor() = "FF0000FF"
   
@@ -47,25 +50,14 @@ object jugador {
     //verificar que este en la posicion del charco de agua
   }
   
-  method talarMadera() {
-    self.validarTalarMadera()
-    madera += 3
-  }
+
   
-  method validarTalarMadera() {
-    
-    //verificar que este en la posicion de la madera 
-    //y que tenga el serrucho
-  }
-  
-  method agarrarHilo() {
-    self.validarAgarrarHilo()
+  method agregarHilo() {
     hilo += 1
   }
   
-  method validarAgarrarHilo() {
-    
-    //verifica que este en la tela de araña
+  method inventarioActual() {
+    return inventario
   }
   
   method agarrarSerrucho() {

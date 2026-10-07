@@ -1,4 +1,4 @@
-import juego.jugador
+import juego.*
 import mainJuego.config
 //import wollok.game.*
 
@@ -38,14 +38,11 @@ describe "Logica de agarrar Objeto" {
     config.configurarEscenario()
   }
 
-  test "Sacar Vida al jugador" {
-    jugador.descontarVida(50)
-    assert.equals(50, jugador.vidaActualmente())
-    jugador.descontarVida(20)
-    assert.equals(30, jugador.vidaActualmente())
-    jugador.descontarVida(40)
-    assert.equals(0, jugador.vidaActualmente())
-    assert.notThat(game.hasVisual(jugador))
+  test "Obtener telaDeAraña" {
+    jugador.agregarAlInventario(telaDeAraña)
+    jugador.agregarHilo()
+    assert.equals([telaDeAraña], jugador.inventarioActual())
+    assert.equals(1, jugador.hiloActual())
   }
 
 }

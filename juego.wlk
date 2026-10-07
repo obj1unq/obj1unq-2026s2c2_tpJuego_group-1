@@ -89,26 +89,44 @@ object jugador {
 
 object araña {
   var property position = game.at(1, 1)
-  var direccionAMover = true
+  var direccion = derecha
 
   method image() = "arana.png"
   
   method mover() {
-     if (self.direccion()){ position  = position.right(1)} else { position  = position.left(1)}
+    self.ajustarDireccion()
+    position = direccion.mover(self)
   }
-  method direccion(){
-    return if (position.x() >= game.width()){direccionAMover = false} else (position.x() <= 0) {direccionAMover = true}
-  }
-  
-
-  
   //esto para mi lo tiene que hacer el personaje. el objeto solo existe y si el personaje interactua con el, ahi se activa un metodo del personaje
   method interactuar(personaje) {
     personaje.descontarVida(10)
   }
-  
+  method ajustarDireccion() {
+    direccion = direccion.proxima(self)
+  }
+  method position(){
+    return position
+  }
   //para mi el metodo seria dañoQueCausa(), y despues eso se le descuenta al personaje si hace colision con la araña
   method dañoQueCausa() = 10
+}
+object derecha {
+
+  method mover(personaje) {
+    return personaje.position().right(1)
+  }
+  method proxima(personaje){
+  return if(personaje.position().x() >= game.width() - 1) {izquierda} else self
+  }
+}
+object izquierda {
+  
+  method mover(personaje) {
+    return personaje.position().left(1)
+  }
+  method proxima(personaje){
+    return if (personaje.position().x() <=  0){ derecha} else self
+  }
 }
 
 object telaDeAraña {

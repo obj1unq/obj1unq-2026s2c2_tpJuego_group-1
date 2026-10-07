@@ -12,7 +12,7 @@ object config {
 program PepitaGame {
 	config.configurarEscenario()
 	
-	game.onTick(1000, "araña", {=> araña.mover()})
+	//game.onTick(1000, "araña", {=> araña.mover()})
 	//si el personaje colisiona con un enemigo, llamar al metodo colisionaCon(enemigo)
 	//ej: si colisiona con araña, llamar a colisionaCon(araña)
 	//y eso hace que se llame a ese metodo en personaje que lo que hace es que
@@ -26,6 +26,7 @@ program PepitaGame {
 	//NO BORRAR ESTE COMENTARIO, ES PARA DESPUES MOSTRARLO EN CLASE
 	game.addVisualCharacter(jugador)
 	game.addVisual(araña)
+	game.onCollideDo(jugador, {araña => jugador.descontarVida(araña.dañoQueCausa())})
 	game.addVisual(palmera1)
 	game.start()
 	//para mi aca va un collide donde cuando el personaje colisiona con un charco de agua, y aprieta la letra "a", se llama al metodo tomarAgua()

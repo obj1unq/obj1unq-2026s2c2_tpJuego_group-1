@@ -24,15 +24,19 @@ program PepitaGame {
 	//por ejemplo, si un enemigo le tira una lanza ponele, el metodo se llamaria si el personaje colisiona con la lanza que le tiro el enemigo en cuestion
 	//por ende, siempre tenemos al personaje reaccionando a los enemigos y no al reves donde el enemigo llamaria a un metodo para quitarle vida al personaje
 	//NO BORRAR ESTE COMENTARIO, ES PARA DESPUES MOSTRARLO EN CLASE
-	game.addVisualCharacter(jugador)
-	game.addVisual(araña)
-	game.onCollideDo(jugador, {araña => jugador.descontarVida(araña.dañoQueCausa())})
-	game.addVisual(palmera1)
-	game.addVisual(palmera1)
-	game.addVisual(palmera3)
-	game.addVisual(madera)
-	game.addVisual(serrucho)
-	
+	//game.addVisualCharacter(jugador)
+	//game.addVisual(araña)
+	//game.onCollideDo(jugador, {araña => jugador.descontarVida(araña.dañoQueCausa())})
+	//game.addVisual(palmera1)
+	//game.addVisual(new Arbol())
+	//game.addVisual(palmera3)
+	//game.addVisual(palmera2)
+	game.addVisual(new Madera())
+	//game.addVisual(new Agua())
+	//game.addVisual(bote)
+	//game.addVisual(pico)
+	//game.addVisual(serrucho)
+
 	game.start()
 	//para mi aca va un collide donde cuando el personaje colisiona con un charco de agua, y aprieta la letra "a", se llama al metodo tomarAgua()
 }

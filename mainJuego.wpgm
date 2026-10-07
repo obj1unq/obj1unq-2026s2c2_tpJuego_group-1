@@ -1,20 +1,54 @@
 import wollok.game.*
-
-import juego.pepita
+import juego.*
 
 object config {
-
 	method configurarEscenario() {
-		game.title("Pepita")
+		game.title("TheIsla")
 		game.height(10)
 		game.width(10)
 	}
 }
-program PepitaGame {
 
+program PepitaGame {
 	config.configurarEscenario()
 	
-	game.addVisualCharacter(pepita)
+	game.onTick(1000, "arana", {=> araña.mover()})
+	//si el personaje colisiona con un enemigo, llamar al metodo colisionaCon(enemigo)
+	//ej: si colisiona con araña, llamar a colisionaCon(araña)
+	//y eso hace que se llame a ese metodo en personaje que lo que hace es que
+	//reduce la cantidad de vida del personaje en funcion a la cantidad de daño que aporta el enemigo en cuestion
+	//es un metodo reutilizable para cualquier otro enemigo, ya que dañoQueAporta() es un mensaje polimorfico
+	//que tienen todos los enemigos
+	//no se si es la unica solucion, pero creo que seria mejor que el personaje reaccione a los enemigos de esta forma
+	//en vez de que los enemigos reaccionen a el
+	//por ejemplo, si un enemigo le tira una lanza ponele, el metodo se llamaria si el personaje colisiona con la lanza que le tiro el enemigo en cuestion
+	//por ende, siempre tenemos al personaje reaccionando a los enemigos y no al reves donde el enemigo llamaria a un metodo para quitarle vida al personaje
+	//NO BORRAR ESTE COMENTARIO, ES PARA DESPUES MOSTRARLO EN CLASE
+	game.addVisualCharacter(jugador)
+	game.addVisual(araña)
+	game.onCollideDo(araña, {jugador => jugador.descontarVida(araña.dañoQueCausa())})
+
+	game.onCollideDo(telaDeAraña, {jugador => jugador.agregarAlInventario(telaDeAraña)})
+	game.onCollideDo(telaDeAraña, {jugador => game.removeVisual(telaDeAraña)})
+	game.onCollideDo(telaDeAraña, {jugador => jugador.agregarHilo()})
+	
+	
+	game.addVisual(palmera1)
+	game.addVisual(telaDeAraña)
+	//game.addVisualCharacter(jugador)
+	//game.addVisual(araña)
+	//game.onCollideDo(jugador, {araña => jugador.descontarVida(araña.dañoQueCausa())})
+	//game.addVisual(palmera1)
+	//game.addVisual(new Arbol())
+	//game.addVisual(palmera3)
+	//game.addVisual(palmera2)
+	game.addVisual(new Madera())
+	//game.addVisual(new Agua())
+	//game.addVisual(bote)
+	//game.addVisual(pico)
+	//game.addVisual(serrucho)
 
 	game.start()
+	
+	//para mi aca va un collide donde cuando el personaje colisiona con un charco de agua, y aprieta la letra "a", se llama al metodo tomarAgua()
 }

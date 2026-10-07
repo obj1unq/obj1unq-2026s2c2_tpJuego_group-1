@@ -24,6 +24,17 @@ program PepitaGame {
 	//por ejemplo, si un enemigo le tira una lanza ponele, el metodo se llamaria si el personaje colisiona con la lanza que le tiro el enemigo en cuestion
 	//por ende, siempre tenemos al personaje reaccionando a los enemigos y no al reves donde el enemigo llamaria a un metodo para quitarle vida al personaje
 	//NO BORRAR ESTE COMENTARIO, ES PARA DESPUES MOSTRARLO EN CLASE
+	game.addVisualCharacter(jugador)
+	game.addVisual(araña)
+	game.onCollideDo(araña, {jugador => jugador.descontarVida(araña.dañoQueCausa())})
+
+	game.onCollideDo(telaDeAraña, {jugador => jugador.agregarAlInventario(telaDeAraña)})
+	game.onCollideDo(telaDeAraña, {jugador => game.removeVisual(telaDeAraña)})
+	game.onCollideDo(telaDeAraña, {jugador => jugador.agregarHilo()})
+	
+	
+	game.addVisual(palmera1)
+	game.addVisual(telaDeAraña)
 	//game.addVisualCharacter(jugador)
 	//game.addVisual(araña)
 	//game.onCollideDo(jugador, {araña => jugador.descontarVida(araña.dañoQueCausa())})

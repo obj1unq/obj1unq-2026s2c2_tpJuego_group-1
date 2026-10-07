@@ -1,4 +1,4 @@
-import juego.jugador
+import juego.*
 import mainJuego.config
 //import wollok.game.*
 
@@ -28,6 +28,21 @@ describe "Vida del Jugador" {
     jugador.descontarVida(40)
     assert.equals(0, jugador.vidaActualmente())
     assert.notThat(game.hasVisual(jugador))
+  }
+
+}
+
+describe "Logica de agarrar Objeto" {
+
+  method initialize() {
+    config.configurarEscenario()
+  }
+
+  test "Obtener telaDeAraña" {
+    jugador.agregarAlInventario(telaDeAraña)
+    jugador.agregarHilo()
+    assert.equals([telaDeAraña], jugador.inventarioActual())
+    assert.equals(1, jugador.hiloActual())
   }
 
 }

@@ -11,14 +11,14 @@ object jugador {
   method madera() = madera
   
   //metodos de prueba
-  method text() = position.y().toString() //vidaActualmente.toString()
+  //method text() = position.y().toString() //vidaActualmente.toString()
+  
   method hiloActual() {
     return hilo
   }
   
   method textColor() = "FF0000FF"
   
-  //para mi esto no va
   method descontarVida(cantidad) {
     if (vidaActualmente < cantidad) {
       self.morir()
@@ -26,14 +26,12 @@ object jugador {
       vidaActualmente -= cantidad
     }
   }
+
   
   method agregarAlInventario(item) {
     inventario.add(item)
   }
   
-  method verificarVida() {
-    if (vidaActualmente <= 0) self.morir()
-  }
   
   method morir() {
     vidaActualmente = 0
@@ -168,7 +166,7 @@ object pico {
 class Madera {
   method image() = "madera.png"
   
-  method position() = game.at(1,1)
+  method position() = game.at(6,4)
 }
 
 class Agua {

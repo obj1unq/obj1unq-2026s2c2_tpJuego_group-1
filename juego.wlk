@@ -48,18 +48,26 @@ object palmera3 {
 
 class Arbol {
   var property estado = sinTalar
+  const x = 0.randomUpTo(game.width()).truncate(0)
+  const y = 0.randomUpTo(game.height()).truncate(0)
   //por ahora esto no es necesario, pero eventualmente podriamos hacer esto: const property maderaQueDa = 3
-  var property position = game.at(10, 9)
+  var property position = game.at(x, y)//game.center()
   
-  method image() = ("arbol_" + estado.image()) + ".png"
+  method image() = "arbol_" + estado.completarImagen() + ".png"
 }
 
 object talado {
-  method image() = "arbol_talado.png"
+
+  method completarImagen() {
+    return "talado"
+  }  
+  
 }
 
 object sinTalar {
-  method image() = "arbol_sinTalar.png"
+  method completarImagen() {
+    return "sinTalar"
+  }
 }
 
 

@@ -4,6 +4,13 @@ import jugador.*
 import enemigos.*
 import interfaz.*
 
+const arbol1 = new Arbol()
+const arbol2 = new Arbol()
+const arbol3 = new Arbol()
+const arbol4 = new Arbol()
+const arbol5 = new Arbol()
+const arbol6 = new Arbol()
+
 
 object config {
 	method configurarEscenario() {
@@ -16,6 +23,7 @@ object config {
 program PepitaGame {
 	config.configurarEscenario()
 	game.onTick(1000, "arana", {=> araña.mover()})
+
 	//si el personaje colisiona con un enemigo, llamar al metodo colisionaCon(enemigo)
 	//ej: si colisiona con araña, llamar a colisionaCon(araña)
 	//y eso hace que se llame a ese metodo en personaje que lo que hace es que
@@ -38,13 +46,18 @@ program PepitaGame {
 	game.onCollideDo(telaDeAraña, {jugador => jugador.agregarHilo()})
 	
 	
-	game.addVisual(palmera1)
+
+
 	game.addVisual(telaDeAraña)
 
 
-	game.addVisual(new Arbol())
-	game.addVisual(palmera3)
-	game.addVisual(palmera2)
+	game.addVisual(arbol1)
+	game.addVisual(arbol2)
+	game.addVisual(arbol3)
+	game.addVisual(arbol4)
+	game.addVisual(arbol5)
+	game.addVisual(arbol6)
+
 	game.addVisual(new Madera())
 	game.addVisual(new Agua())
 	game.addVisual(bote)

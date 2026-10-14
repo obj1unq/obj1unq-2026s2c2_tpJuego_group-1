@@ -5,8 +5,8 @@ object jugador {
   var property nivelDeAgua = 20
   const inventario = []
   var property position = game.center()
-  var madera = 0
-  var hilo = 0
+  var property madera = 0
+  var property hilo = 0
   
   method madera() = madera
   

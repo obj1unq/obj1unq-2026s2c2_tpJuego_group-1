@@ -13,6 +13,8 @@ object config {
 	}
 }
 
+//ponerle a cada objeto si tiene la capacidad de talar, cuando veamos si tenemos un objeto con capacidad de talar en el inventario, ya tenemos ese polimorfismo
+
 program PepitaGame {
 	config.configurarEscenario()
 	game.onTick(1000, "arana", {=> araña.mover()})

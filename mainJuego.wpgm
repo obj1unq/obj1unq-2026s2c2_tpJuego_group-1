@@ -50,10 +50,10 @@ program PepitaGame {
 	game.addVisual(serrucho)
 
 	
-	keyboard.left().onPressDo({jugador.mover(izquierda)})
-	keyboard.right().onPressDo({jugador.mover(derecha)})
-	keyboard.up().onPressDo({jugador.mover(arriba)})
-	keyboard.down().onPressDo({jugador.mover(abajo)})
+	keyboard.left().onPressDo({jugador.mover(izquierdaJugador)})
+	keyboard.right().onPressDo({jugador.mover(derechaJugador)})
+	keyboard.up().onPressDo({jugador.mover(arribaJugador)})
+	keyboard.down().onPressDo({jugador.mover(abajoJugador)})
 
 	game.start()
 	

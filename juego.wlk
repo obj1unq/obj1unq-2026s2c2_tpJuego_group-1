@@ -84,7 +84,7 @@ object araña {
   //para mi el metodo seria dañoQueCausa(), y despues eso se le descuenta al personaje si hace colision con la araña
   method dañoQueCausa() = 10
 }
-object derecha {
+ object derecha {
   method mover(personaje) {
     return personaje.position().right(1)
   }
@@ -99,8 +99,7 @@ object izquierda {
   method proxima(personaje){
     return if (personaje.position().x() <=  0){ derecha} else self
   }
-}
-
+} 
 object telaDeAraña {
   method image() = "telaArana.png"
   
@@ -196,7 +195,7 @@ class Agua {
 }
 
 //direcciones
-object izquierda {
+object izquierdaJugador {
 
     method siguiente(posicion) {
         self.validarSiguiente(posicion)
@@ -208,7 +207,7 @@ object izquierda {
         }
     }
 }
-object derecha {
+object derechaJugador {
     method siguiente(posicion) {
         self.validarSiguiente(posicion)
         return game.at(posicion.x() + 1 , posicion.y())
@@ -219,7 +218,7 @@ object derecha {
         }
     }
 }
-object arriba {
+object arribaJugador {
     method siguiente(posicion) {
         self.validarSiguiente(posicion)
         return game.at(posicion.x(), (posicion.y() + 1) )
@@ -230,7 +229,7 @@ object arriba {
         }
     }
 }
-object abajo {
+object abajoJugador {
     method siguiente(posicion) {
         self.validarSiguiente(posicion)
         return game.at(posicion.x(), (posicion.y() - 1))

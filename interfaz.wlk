@@ -33,3 +33,59 @@ object personajeVida {
     return "corazon.png"
   } 
 }
+
+object personajeHidratacion {
+
+  var property position = game.at(7, 11) 
+  const property blanco = "FFFFFFFF"
+
+  method text() {
+    return  (jugador.nivelDeAgua()).toString()
+  }
+
+  method textColor() {
+    return blanco
+  }
+
+  method image() {
+    return "agua.png"
+  } 
+}
+
+object personajeHilo {
+
+  var property position = game.at(2, 11) 
+  const property blanco = "FFFFFFFF"
+
+  method text() {
+    return  (jugador.hilo()).toString()
+  }
+
+  method textColor() {
+    return blanco
+  }
+
+  method image() {
+    return "telaArana.png"
+  }
+}
+
+
+  object personajeMadera {
+
+  var property position = game.at(2, 11) 
+  const property blanco = "FFFFFFFF"
+
+  method text() {
+    return  (jugador.madera()).toString()
+  }
+
+  method textColor() {
+    return blanco
+  }
+
+  method image() {
+    return "madera.png"
+  }
+
+}

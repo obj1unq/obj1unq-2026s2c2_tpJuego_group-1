@@ -93,6 +93,7 @@ class Agua {
   
   method position() = game.at(2, 3)
 
-  const property sedQueQuita = 5
+const property aguaQueAporta = 5
+
 }
 

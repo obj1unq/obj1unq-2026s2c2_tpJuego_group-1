@@ -6,11 +6,18 @@ object telaDeAraña {
   method image() = "telaArana.png"
   
   method position() = game.at(2,4)
-  
-  //para mi esto lo tiene que hacer el personaje:
-  method interactuar(personaje) {
-    personaje.recogerHilo(5) // a implementar
+
+  method puedeTalar() {
+    return true
   }
+
+  method interactuarConJugador(jugador) {
+    jugador.agregarHilo()
+    jugador.agregarAlInventario(self)
+    game.removeVisual(self)
+  }
+
+
 }
 
 class Arbol {
@@ -86,6 +93,10 @@ class Agua {
   method image() = "agua.png"
   
   method position() = game.at(2, 3)
+
+  method interactuarConJugador(jugador) {
+    jugador.hidratarse(aguaQueAporta)
+  }
 
 const property aguaQueAporta = 5
 

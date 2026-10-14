@@ -17,8 +17,6 @@ object config {
 	}
 }
 
-//ponerle a cada objeto si tiene la capacidad de talar, cuando veamos si tenemos un objeto con capacidad de talar en el inventario, ya tenemos ese polimorfismo
-
 program PepitaGame {
 	config.configurarEscenario()
 
@@ -40,44 +38,32 @@ program PepitaGame {
 	constructorAraña.construir(300,game.at(0,2))
 	constructorAraña.construir(500,game.at(10,1))
 	constructorAraña.construir(500,game.at(10,3))
-	
-	const agua1 = new Agua()
+
+
+	//SECTOR INTERFAZ
 	game.addVisual(jugador)
 	game.addVisual(interfaz)
 	game.addVisual(personajeVida)
+	game.addVisual(personajeHidratacion) //MAL NOMBRE
+	//SECTOR INTERFAZ
 
 	game.onCollideDo(jugador, {objeto => objeto.interactuarConJugador(jugador)})
 
-	game.addVisual(personajeHidratacion)
 
-	game.onCollideDo(telaDeAraña, {jugador => jugador.agregarAlInventario(telaDeAraña)})
-	game.onCollideDo(telaDeAraña, {jugador => game.removeVisual(telaDeAraña)})
-	game.onCollideDo(telaDeAraña, {jugador => jugador.agregarHilo()})
-	
-	
-
-
-	game.addVisual(telaDeAraña)
-
-
+	//SECTOR COSAS DEL MAPA
 	game.addVisual(arbol1)
 	game.addVisual(arbol2)
 	game.addVisual(arbol3)
-
-	game.onCollideDo(agua1, {jugador => jugador.hidratarse(agua1.aguaQueAporta())})
-	//agua.hidratar()
-	//y luego el jugador se hidrata
-	game.addVisual(palmera1)
-	game.addVisual(telaDeAraña)
-
-	game.addVisual(new Arbol())
-	game.addVisual(palmera3)
-	game.addVisual(palmera2)
+	const agua1 = new Agua()
 	game.addVisual(new Madera())
 	game.addVisual(agua1)
 	game.addVisual(bote)
 	game.addVisual(pico)
 	game.addVisual(serrucho)
+	game.addVisual(telaDeAraña)
+	//SECTOR COSAS DEL MAPA
+
+	//game.onCollideDo(agua1, {jugador => jugador.hidratarse(agua1.aguaQueAporta())})
 
 	keyboard.left().onPressDo({jugador.mover(izquierdaJugador)})
 	keyboard.right().onPressDo({jugador.mover(derechaJugador)})

@@ -25,6 +25,7 @@ class Araña {
   }
   method dañoQueCausa() = 10
 }
+
  object derecha {
   method mover(personaje,cantidad) {
     return personaje.position().right(cantidad)
@@ -33,6 +34,7 @@ class Araña {
   return if(personaje.position().x() >= game.width() - 1) {izquierda} else self
   }
 }
+
 object izquierda {
   method mover(personaje,cantidad) {
     return personaje.position().left(cantidad)

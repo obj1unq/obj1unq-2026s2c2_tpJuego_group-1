@@ -73,9 +73,9 @@ method hidratarse(cantidad){
     position = direccion.siguiente(position)
   }
   
-  method colisionaCon(enemigo) {
+/*   method colisionaCon(enemigo) {
     vidaActualmente -= enemigo.dañoQueCausa()
-  }
+  } */
   
   method image() = "Jugador.png"
 

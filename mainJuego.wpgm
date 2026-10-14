@@ -17,10 +17,13 @@ object config {
 	}
 }
 
+//ponerle a cada objeto si tiene la capacidad de talar, cuando veamos si tenemos un objeto con capacidad de talar en el inventario, ya tenemos ese polimorfismo
+
 program PepitaGame {
 	config.configurarEscenario()
-	game.onTick(1000, "arana", {=> araña.mover()})
 
+	
+	game.onTick(2000, "descontarAgua", {=> jugador.consumirAgua()})
 	//si el personaje colisiona con un enemigo, llamar al metodo colisionaCon(enemigo)
 	//ej: si colisiona con araña, llamar a colisionaCon(araña)
 	//y eso hace que se llame a ese metodo en personaje que lo que hace es que
@@ -32,16 +35,20 @@ program PepitaGame {
 	//por ejemplo, si un enemigo le tira una lanza ponele, el metodo se llamaria si el personaje colisiona con la lanza que le tiro el enemigo en cuestion
 	//por ende, siempre tenemos al personaje reaccionando a los enemigos y no al reves donde el enemigo llamaria a un metodo para quitarle vida al personaje
 	//NO BORRAR ESTE COMENTARIO, ES PARA DESPUES MOSTRARLO EN CLASE
+
+
+	constructorAraña.construir(300,game.at(0,2))
+	constructorAraña.construir(500,game.at(10,1))
+	constructorAraña.construir(500,game.at(10,3))
+	
+	const agua1 = new Agua()
 	game.addVisual(jugador)
-	game.addVisual(araña)
 	game.addVisual(interfaz)
 	game.addVisual(personajeVida)
 
 	game.onCollideDo(jugador, {objeto => objeto.interactuarConJugador(jugador)})
 
-
-	game.onCollideDo(araña, {jugador => jugador.descontarVida(araña.dañoQueCausa())})
-	game.onCollideDo(araña, {jugador => jugador.descontarVida(araña.dañoQueCausa())})
+	game.addVisual(personajeHidratacion)
 
 	game.onCollideDo(telaDeAraña, {jugador => jugador.agregarAlInventario(telaDeAraña)})
 	game.onCollideDo(telaDeAraña, {jugador => game.removeVisual(telaDeAraña)})
@@ -57,19 +64,25 @@ program PepitaGame {
 	game.addVisual(arbol2)
 	game.addVisual(arbol3)
 
+	game.onCollideDo(agua1, {jugador => jugador.hidratarse(agua1.aguaQueAporta())})
+	//agua.hidratar()
+	//y luego el jugador se hidrata
+	game.addVisual(palmera1)
+	game.addVisual(telaDeAraña)
+
+	game.addVisual(new Arbol())
+	game.addVisual(palmera3)
+	game.addVisual(palmera2)
 	game.addVisual(new Madera())
-	game.addVisual(new Agua())
+	game.addVisual(agua1)
 	game.addVisual(bote)
 	game.addVisual(pico)
 	game.addVisual(serrucho)
 
-	
 	keyboard.left().onPressDo({jugador.mover(izquierdaJugador)})
 	keyboard.right().onPressDo({jugador.mover(derechaJugador)})
 	keyboard.up().onPressDo({jugador.mover(arribaJugador)})
 	keyboard.down().onPressDo({jugador.mover(abajoJugador)})
 
 	game.start()
-	
-	//para mi aca va un collide donde cuando el personaje colisiona con un charco de agua, y aprieta la letra "a", se llama al metodo tomarAgua()
 }

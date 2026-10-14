@@ -11,14 +11,14 @@ object jugador {
   method madera() = madera
   
   //metodos de prueba
-  method text() = vidaActualmente.toString()
+  //method text() = position.y().toString() //vidaActualmente.toString()
+  
   method hiloActual() {
     return hilo
   }
   
   method textColor() = "FF0000FF"
   
-  //para mi esto no va
   method descontarVida(cantidad) {
     if (vidaActualmente < cantidad) {
       self.morir()
@@ -26,30 +26,17 @@ object jugador {
       vidaActualmente -= cantidad
     }
   }
+
   
   method agregarAlInventario(item) {
     inventario.add(item)
   }
   
-  method verificarVida() {
-    if (vidaActualmente <= 0) self.morir()
-  }
   
   method morir() {
     vidaActualmente = 0
     game.removeVisual(self)
   }
-  
-  method tomarAgua() {
-    self.validarTomarAgua()
-    nivelDeAgua += 5
-  }
-  
-  method validarTomarAgua() {
-    
-    //verificar que este en la posicion del charco de agua
-  }
-  
 
   
   method agregarHilo() {
@@ -60,14 +47,9 @@ object jugador {
     return inventario
   }
   
-  method agarrarSerrucho() {
-    self.validarAgarrarSerrucho()
-    inventario.add(serrucho)
-  }
-  
-  method validarAgarrarSerrucho() {
-    
-    //if(not inventario.contains(serrucho) and )
+
+  method mover(direccion) {
+    position = direccion.siguiente(position)
   }
   
   method colisionaCon(enemigo) {
@@ -102,7 +84,7 @@ object araña {
   //para mi el metodo seria dañoQueCausa(), y despues eso se le descuenta al personaje si hace colision con la araña
   method dañoQueCausa() = 10
 }
-object derecha {
+ object derecha {
   method mover(personaje) {
     return personaje.position().right(1)
   }
@@ -117,8 +99,7 @@ object izquierda {
   method proxima(personaje){
     return if (personaje.position().x() <=  0){ derecha} else self
   }
-}
-
+} 
 object telaDeAraña {
   method image() = "telaArana.png"
   
@@ -202,7 +183,7 @@ object pico {
 class Madera {
   method image() = "madera.png"
   
-  method position() = game.at(1,1)
+  method position() = game.at(6,4)
 }
 
 class Agua {
@@ -211,5 +192,54 @@ class Agua {
   method position() = game.at(2, 3)
 
   const property sedQueQuita = 5
+}
+
+//direcciones
+object izquierdaJugador {
+
+    method siguiente(posicion) {
+        self.validarSiguiente(posicion)
+        return game.at(posicion.x() - 1 , posicion.y())
+    }
+    method validarSiguiente(posicion) {
+        if(posicion.x() == 0) {
+            self.error('No se puede mover a la izquierda')
+        }
+    }
+}
+object derechaJugador {
+    method siguiente(posicion) {
+        self.validarSiguiente(posicion)
+        return game.at(posicion.x() + 1 , posicion.y())
+    }
+    method validarSiguiente(posicion) {
+        if(posicion.x() == game.width() - 1 ) {
+          self.error("No se puede mover a la derecha")
+        }
+    }
+}
+object arribaJugador {
+    method siguiente(posicion) {
+        self.validarSiguiente(posicion)
+        return game.at(posicion.x(), (posicion.y() + 1) )
+    }
+    method validarSiguiente(posicion) {
+        if(posicion.y() == game.height() - 3) {
+          self.error('No se puede mover a la arriba')
+        }
+    }
+}
+object abajoJugador {
+    method siguiente(posicion) {
+        self.validarSiguiente(posicion)
+        return game.at(posicion.x(), (posicion.y() - 1))
+    }
+    
+    method validarSiguiente(posicion) {
+        if(posicion.y() == 0 ) {
+            self.error('No se puede mover abajo')
+        }
+    }
+
 }
 

@@ -8,7 +8,7 @@ describe "group of tests for player" {
     config.configurarEscenario()
   }
   test "jugador tiene posicion e imagen" {
-    assert.equals(game.at(5,5), jugador.position())
+    assert.equals(game.center(), jugador.position())
     assert.equals("Jugador.png", jugador.image())
   }
 

@@ -1,5 +1,7 @@
 import wollok.game.*
 import juego.*
+import jugador.*
+import enemigos.*
 import interfaz.*
 
 

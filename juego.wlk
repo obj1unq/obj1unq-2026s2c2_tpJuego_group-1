@@ -23,9 +23,12 @@ class Arbol {
   
   method image() = "arbol_" + estado.completarImagen() + ".png"
 
+
   method interactuarConJugador(jugador) {
-    jugador.agregarMadera(5)
-    estado = talado
+    if (jugador.tieneHerramientaQueCortaArbol()){
+      jugador.agregarMadera(5)
+      estado = talado
+    }
   }
 }
 
@@ -58,10 +61,8 @@ object serrucho {
   }
 
   method interactuarConJugador(jugador) {
-    if (jugador.tieneHerramientaQueCortaArbol()){
-      jugador.agregarAlInventario(self)
-      game.removeVisual(self)
-    }
+    jugador.agregarAlInventario(self)
+    game.removeVisual(self)
   }
 
   method image() = "serrucho.png"

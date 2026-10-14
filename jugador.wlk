@@ -2,7 +2,7 @@ import wollok.game.*
 
 object jugador {
   var vidaActualmente = 100
-  var nivelDeAgua = 20
+  var property nivelDeAgua = 20
   const inventario = []
   var property position = game.center()
   var madera = 0
@@ -10,6 +10,20 @@ object jugador {
   
   method madera() = madera
   
+  method bajarNivelDeAgua(){
+    if(nivelDeAgua <=0){
+      nivelDeAgua = 0
+    }else{
+      nivelDeAgua -= 6
+    }
+  }
+
+  method desidratacion(){
+    if(nivelDeAgua==0){
+      self.descontarVida(7)
+    }
+  }
+
   //metodos de prueba
   //method text() = position.y().toString() //vidaActualmente.toString()
   
@@ -28,6 +42,10 @@ object jugador {
   }
 
   
+method hidratarse(cantidad){
+  nivelDeAgua = nivelDeAgua + cantidad
+}
+
   method agregarAlInventario(item) {
     inventario.add(item)
   }

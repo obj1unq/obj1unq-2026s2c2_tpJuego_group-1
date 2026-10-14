@@ -33,3 +33,21 @@ object personajeVida {
     return "corazon.png"
   } 
 }
+
+object personajeHidratacion {
+
+  var property position = game.at(7, 11) 
+  const property blanco = "FFFFFFFF"
+
+  method text() {
+    return  (jugador.nivelDeAgua()).toString()
+  }
+
+  method textColor() {
+    return blanco
+  }
+
+  method image() {
+    return "agua.png"
+  } 
+}

@@ -2,7 +2,7 @@ import juego.*
 import jugador.*
 
 
-class araña {
+class Araña {
   var property position = game.at(0, 1)
   var direccion = derecha
   var cantidadDeCeldas =  1
@@ -24,14 +24,6 @@ class araña {
     return position
   }
   method dañoQueCausa() = 10
-  
-  method posicionDeLaAraña(x,y) {
-    position = game.at(x,y)
-  }
-  method CambiarcantidadDeCeldas(cantidad){
-    cantidadDeCeldas = cantidad 
-  }
-
 }
  object derecha {
   method mover(personaje,cantidad) {
@@ -47,6 +39,14 @@ object izquierda {
   }
   method proxima(personaje){
     return if (personaje.position().x() <=  0){derecha} else self
+  }
+}
+
+object constructorAraña{
+  method construir(velocidad,posicion){
+    const araña = new Araña(position = posicion)
+    game.addVisual(araña)
+    game.onTick(velocidad, araña.identity(), {=> araña.mover()}) 
   }
 }
 

@@ -15,8 +15,6 @@ object config {
 
 program PepitaGame {
 	config.configurarEscenario()
-	game.onTick(1000, "arana", {=> araña1.mover()})
-	game.onTick(1000, "arana", {=> araña2.mover()})
 	//si el personaje colisiona con un enemigo, llamar al metodo colisionaCon(enemigo)
 	//ej: si colisiona con araña, llamar a colisionaCon(araña)
 	//y eso hace que se llame a ese metodo en personaje que lo que hace es que
@@ -28,20 +26,15 @@ program PepitaGame {
 	//por ejemplo, si un enemigo le tira una lanza ponele, el metodo se llamaria si el personaje colisiona con la lanza que le tiro el enemigo en cuestion
 	//por ende, siempre tenemos al personaje reaccionando a los enemigos y no al reves donde el enemigo llamaria a un metodo para quitarle vida al personaje
 	//NO BORRAR ESTE COMENTARIO, ES PARA DESPUES MOSTRARLO EN CLASE
-	const araña1 = new araña()
-	const araña2 = new araña()
 
-	araña2.posicionDeLaAraña(10,2)
-	araña2.CambiarcantidadDeCeldas(2)
-	
+
+	constructorAraña.construir(300,game.at(0,2))
+	constructorAraña.construir(500,game.at(10,1))
+	constructorAraña.construir(500,game.at(10,3))
 	
 	game.addVisual(jugador)
-	game.addVisual(araña1)
-	game.addVisual(araña2)
 	game.addVisual(interfaz)
 	game.addVisual(personajeVida)
-	game.onCollideDo(araña1, {jugador => jugador.descontarVida(araña.dañoQueCausa())})
-	game.onCollideDo(araña2, {jugador => jugador.descontarVida(araña.dañoQueCausa())})
 
 	game.onCollideDo(telaDeAraña, {jugador => jugador.agregarAlInventario(telaDeAraña)})
 	game.onCollideDo(telaDeAraña, {jugador => game.removeVisual(telaDeAraña)})
@@ -66,6 +59,4 @@ program PepitaGame {
 	keyboard.down().onPressDo({jugador.mover(abajoJugador)})
 
 	game.start()
-	
-	//para mi aca va un collide donde cuando el personaje colisiona con un charco de agua, y aprieta la letra "a", se llama al metodo tomarAgua()
 }

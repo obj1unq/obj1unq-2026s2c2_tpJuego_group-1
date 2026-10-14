@@ -55,6 +55,10 @@ method hidratarse(cantidad){
     game.removeVisual(self)
   }
 
+  method agregarMadera(cantidad) {
+    madera += cantidad
+  }
+
   
   method agregarHilo() {
     hilo += 1
@@ -74,6 +78,10 @@ method hidratarse(cantidad){
   }
   
   method image() = "Jugador.png"
+
+  method tieneHerramientaQueCortaArbol() {
+    return inventario.any({item => item.puedeTalar()})
+  }
   
   method vidaActualmente() = vidaActualmente
 }

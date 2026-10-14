@@ -4,6 +4,10 @@ import jugador.*
 import enemigos.*
 import interfaz.*
 
+const arbol1 = new Arbol(position = game.at(3,5))
+const arbol2 = new Arbol(position = game.at(5,8))
+const arbol3 = new Arbol(position = game.at(9,5))
+
 
 object config {
 	method configurarEscenario() {
@@ -17,6 +21,7 @@ object config {
 
 program PepitaGame {
 	config.configurarEscenario()
+
 	
 	game.onTick(2000, "descontarAgua", {=> jugador.consumirAgua()})
 	//si el personaje colisiona con un enemigo, llamar al metodo colisionaCon(enemigo)
@@ -40,11 +45,25 @@ program PepitaGame {
 	game.addVisual(jugador)
 	game.addVisual(interfaz)
 	game.addVisual(personajeVida)
+
+	game.onCollideDo(jugador, {objeto => objeto.interactuarConJugador(jugador)})
+
 	game.addVisual(personajeHidratacion)
 
 	game.onCollideDo(telaDeAraña, {jugador => jugador.agregarAlInventario(telaDeAraña)})
 	game.onCollideDo(telaDeAraña, {jugador => game.removeVisual(telaDeAraña)})
 	game.onCollideDo(telaDeAraña, {jugador => jugador.agregarHilo()})
+	
+	
+
+
+	game.addVisual(telaDeAraña)
+
+
+	game.addVisual(arbol1)
+	game.addVisual(arbol2)
+	game.addVisual(arbol3)
+
 	game.onCollideDo(agua1, {jugador => jugador.hidratarse(agua1.aguaQueAporta())})
 	//agua.hidratar()
 	//y luego el jugador se hidrata

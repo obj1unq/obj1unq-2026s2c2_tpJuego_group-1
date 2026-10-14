@@ -13,8 +13,6 @@ object config {
 
 program PepitaGame {
 	config.configurarEscenario()
-
-
 	game.onTick(1000, "arana", {=> araña.mover()})
 	//si el personaje colisiona con un enemigo, llamar al metodo colisionaCon(enemigo)
 	//ej: si colisiona con araña, llamar a colisionaCon(araña)
@@ -58,5 +56,6 @@ program PepitaGame {
 	keyboard.down().onPressDo({jugador.mover(abajo)})
 
 	game.start()
+	
 	//para mi aca va un collide donde cuando el personaje colisiona con un charco de agua, y aprieta la letra "a", se llama al metodo tomarAgua()
 }

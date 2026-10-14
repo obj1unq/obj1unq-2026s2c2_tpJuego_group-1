@@ -13,8 +13,12 @@ object config {
 	}
 }
 
+//ponerle a cada objeto si tiene la capacidad de talar, cuando veamos si tenemos un objeto con capacidad de talar en el inventario, ya tenemos ese polimorfismo
+
 program PepitaGame {
 	config.configurarEscenario()
+	
+	game.onTick(2000, "descontarAgua", {=> jugador.consumirAgua()})
 	//si el personaje colisiona con un enemigo, llamar al metodo colisionaCon(enemigo)
 	//ej: si colisiona con araña, llamar a colisionaCon(araña)
 	//y eso hace que se llame a ese metodo en personaje que lo que hace es que
@@ -32,15 +36,18 @@ program PepitaGame {
 	constructorAraña.construir(500,game.at(10,1))
 	constructorAraña.construir(500,game.at(10,3))
 	
+	const agua1 = new Agua()
 	game.addVisual(jugador)
 	game.addVisual(interfaz)
 	game.addVisual(personajeVida)
+	game.addVisual(personajeHidratacion)
 
 	game.onCollideDo(telaDeAraña, {jugador => jugador.agregarAlInventario(telaDeAraña)})
 	game.onCollideDo(telaDeAraña, {jugador => game.removeVisual(telaDeAraña)})
 	game.onCollideDo(telaDeAraña, {jugador => jugador.agregarHilo()})
-	
-	
+	game.onCollideDo(agua1, {jugador => jugador.hidratarse(agua1.aguaQueAporta())})
+	//agua.hidratar()
+	//y luego el jugador se hidrata
 	game.addVisual(palmera1)
 	game.addVisual(telaDeAraña)
 
@@ -48,7 +55,7 @@ program PepitaGame {
 	game.addVisual(palmera3)
 	game.addVisual(palmera2)
 	game.addVisual(new Madera())
-	game.addVisual(new Agua())
+	game.addVisual(agua1)
 	game.addVisual(bote)
 	game.addVisual(pico)
 	game.addVisual(serrucho)

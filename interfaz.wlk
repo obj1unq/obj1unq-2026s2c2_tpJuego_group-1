@@ -1,4 +1,5 @@
-import juego.jugador
+import juego.*
+import jugador.*
 
 
 object interfaz {

@@ -1,5 +1,7 @@
 import juego.*
 import mainJuego.config
+import jugador.jugador
+
 //import wollok.game.*
 
 describe "group of tests for player" {

@@ -5,7 +5,7 @@ import wollok.game.*
 object telaDeAraña {
   method image() = "telaArana.png"
   
-  method position() = game.at(2,2)
+  method position() = game.at(2,4)
   
   //para mi esto lo tiene que hacer el personaje:
   method interactuar(personaje) {

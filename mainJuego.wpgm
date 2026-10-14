@@ -1,20 +1,74 @@
 import wollok.game.*
+import juego.*
+import jugador.*
+import enemigos.*
+import interfaz.*
 
-import juego.pepita
+const arbol1 = new Arbol(position = game.at(3,5))
+const arbol2 = new Arbol(position = game.at(5,8))
+const arbol3 = new Arbol(position = game.at(9,5))
+
 
 object config {
-
 	method configurarEscenario() {
-		game.title("Pepita")
-		game.height(10)
+		game.title("TheIsla")
+		game.height(13)
 		game.width(10)
 	}
 }
-program PepitaGame {
 
+program PepitaGame {
 	config.configurarEscenario()
+
 	
-	game.addVisualCharacter(pepita)
+	game.onTick(2000, "descontarAgua", {=> jugador.consumirAgua()})
+	//si el personaje colisiona con un enemigo, llamar al metodo colisionaCon(enemigo)
+	//ej: si colisiona con araña, llamar a colisionaCon(araña)
+	//y eso hace que se llame a ese metodo en personaje que lo que hace es que
+	//reduce la cantidad de vida del personaje en funcion a la cantidad de daño que aporta el enemigo en cuestion
+	//es un metodo reutilizable para cualquier otro enemigo, ya que dañoQueAporta() es un mensaje polimorfico
+	//que tienen todos los enemigos
+	//no se si es la unica solucion, pero creo que seria mejor que el personaje reaccione a los enemigos de esta forma
+	//en vez de que los enemigos reaccionen a el
+	//por ejemplo, si un enemigo le tira una lanza ponele, el metodo se llamaria si el personaje colisiona con la lanza que le tiro el enemigo en cuestion
+	//por ende, siempre tenemos al personaje reaccionando a los enemigos y no al reves donde el enemigo llamaria a un metodo para quitarle vida al personaje
+	//NO BORRAR ESTE COMENTARIO, ES PARA DESPUES MOSTRARLO EN CLASE
+
+
+	constructorAraña.construir(300,game.at(0,2))
+	constructorAraña.construir(500,game.at(10,1))
+	constructorAraña.construir(500,game.at(10,3))
+
+
+	//SECTOR INTERFAZ
+	game.addVisual(jugador)
+	game.addVisual(interfaz)
+	game.addVisual(personajeVida)
+	game.addVisual(personajeHidratacion) //MAL NOMBRE
+	//SECTOR INTERFAZ
+
+	game.onCollideDo(jugador, {objeto => objeto.interactuarConJugador(jugador)})
+
+
+	//SECTOR COSAS DEL MAPA
+	game.addVisual(arbol1)
+	game.addVisual(arbol2)
+	game.addVisual(arbol3)
+	const agua1 = new Agua()
+	game.addVisual(new Madera())
+	game.addVisual(agua1)
+	game.addVisual(bote)
+	game.addVisual(pico)
+	game.addVisual(serrucho)
+	game.addVisual(telaDeAraña)
+	//SECTOR COSAS DEL MAPA
+
+	//game.onCollideDo(agua1, {jugador => jugador.hidratarse(agua1.aguaQueAporta())})
+
+	keyboard.left().onPressDo({jugador.mover(izquierdaJugador)})
+	keyboard.right().onPressDo({jugador.mover(derechaJugador)})
+	keyboard.up().onPressDo({jugador.mover(arribaJugador)})
+	keyboard.down().onPressDo({jugador.mover(abajoJugador)})
 
 	game.start()
 }

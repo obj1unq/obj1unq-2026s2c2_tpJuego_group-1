@@ -12,61 +12,34 @@ object telaDeAraña {
     personaje.recogerHilo(5) // a implementar
   }
 }
-//para mi los objetos palmeras deberian ser instancias de la clase Arbol que defini mas abajo,
-
-//por otro lado, el metodo para agarrar madera es parte de personaje, no del arbol en si
-//no objetos individuales como esta aca:
-object palmera1 {
-  method image() = "palmera1.png"
-  
-  method position() = game.at(5,6)
-  
-  method interactuar(personaje) {
-    personaje.recogerMadera(3) // a implementar
-  }
-}
-
-object palmera2 {
-  method image() = "palmera1.png"
-  
-  method position() = game.at(5, 1)
-  
-  method interactuar(personaje) {
-    personaje.recogerMadera(1) // a implementar
-  }
-}
-
-object palmera3 {
-  method image() = "palmera1.png"
-  
-  method position() = game.at(3, 3)
-  
-  method interactuar(personaje) {
-    personaje.recogerMadera(5) // a implementar
-  }
-}
 
 class Arbol {
   var property estado = sinTalar
-  const x = 0.randomUpTo(game.width()).truncate(0)
-  const y = 0.randomUpTo(game.height()).truncate(0)
+  //const x = 0.randomUpTo(game.width()).truncate(0)
+  //const y = 0.randomUpTo(game.height()).truncate(0)
   //por ahora esto no es necesario, pero eventualmente podriamos hacer esto: const property maderaQueDa = 3
-  var property position = game.at(x, y)//game.center()
+  var property position = game.center() //game.center()
+
   
   method image() = "arbol_" + estado.completarImagen() + ".png"
+
+  method interactuarConJugador(jugador) {
+    jugador.agregarMadera(5)
+    estado = talado
+  }
 }
 
 object talado {
 
   method completarImagen() {
-    return "talado"
+    return "taladon"
   }  
   
 }
 
 object sinTalar {
   method completarImagen() {
-    return "sinTalar"
+    return "sinTalarn"
   }
 }
 
@@ -79,6 +52,18 @@ object bote {
 }
 
 object serrucho {
+
+  method puedeTalar() {
+    return true
+  }
+
+  method interactuarConJugador(jugador) {
+    if (jugador.tieneHerramientaQueCortaArbol()){
+      jugador.agregarAlInventario(self)
+      game.removeVisual(self)
+    }
+  }
+
   method image() = "serrucho.png"
   
   method position() = game.at(8, 4)

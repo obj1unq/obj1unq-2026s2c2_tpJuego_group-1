@@ -38,6 +38,10 @@ object jugador {
     game.removeVisual(self)
   }
 
+  method agregarMadera(cantidad) {
+    madera += cantidad
+  }
+
   
   method agregarHilo() {
     hilo += 1
@@ -57,6 +61,10 @@ object jugador {
   }
   
   method image() = "Jugador.png"
+
+  method tieneHerramientaQueCortaArbol() {
+    return inventario.any({item => item.puedeTalar()})
+  }
   
   method vidaActualmente() = vidaActualmente
 }

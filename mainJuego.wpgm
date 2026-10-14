@@ -4,12 +4,9 @@ import jugador.*
 import enemigos.*
 import interfaz.*
 
-const arbol1 = new Arbol()
-const arbol2 = new Arbol()
-const arbol3 = new Arbol()
-const arbol4 = new Arbol()
-const arbol5 = new Arbol()
-const arbol6 = new Arbol()
+const arbol1 = new Arbol(position = game.at(3,5))
+const arbol2 = new Arbol(position = game.at(5,8))
+const arbol3 = new Arbol(position = game.at(9,5))
 
 
 object config {
@@ -39,6 +36,11 @@ program PepitaGame {
 	game.addVisual(araña)
 	game.addVisual(interfaz)
 	game.addVisual(personajeVida)
+
+	game.onCollideDo(jugador, {objeto => objeto.interactuarConJugador(jugador)})
+
+
+	game.onCollideDo(araña, {jugador => jugador.descontarVida(araña.dañoQueCausa())})
 	game.onCollideDo(araña, {jugador => jugador.descontarVida(araña.dañoQueCausa())})
 
 	game.onCollideDo(telaDeAraña, {jugador => jugador.agregarAlInventario(telaDeAraña)})
@@ -54,9 +56,6 @@ program PepitaGame {
 	game.addVisual(arbol1)
 	game.addVisual(arbol2)
 	game.addVisual(arbol3)
-	game.addVisual(arbol4)
-	game.addVisual(arbol5)
-	game.addVisual(arbol6)
 
 	game.addVisual(new Madera())
 	game.addVisual(new Agua())

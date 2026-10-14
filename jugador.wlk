@@ -10,19 +10,18 @@ object jugador {
   
   method madera() = madera
   
-  method bajarNivelDeAgua(){
-    if(nivelDeAgua <=0){
-      nivelDeAgua = 0
-    }else{
-      nivelDeAgua -= 6
-    }
-  }
+  //un solo metodo
 
-  method desidratacion(){
-    if(nivelDeAgua==0){
-      self.descontarVida(7)
-    }
+method consumirAgua(){
+  const proximaAgua = nivelDeAgua-6
+  if(proximaAgua >=0){
+    nivelDeAgua=proximaAgua
+  }else{
+    self.descontarVida(7-nivelDeAgua)
+    nivelDeAgua=0
   }
+}
+
 
   //metodos de prueba
   //method text() = position.y().toString() //vidaActualmente.toString()

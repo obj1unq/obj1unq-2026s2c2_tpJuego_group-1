@@ -18,8 +18,7 @@ object config {
 program PepitaGame {
 	config.configurarEscenario()
 	game.onTick(1000, "arana", {=> araña.mover()})
-	game.onTick(2000, "descontarAgua", {=> jugador.bajarNivelDeAgua()})
-	game.onTick(1000, "desidratacion", {=> jugador.desidratacion()})
+	game.onTick(2000, "descontarAgua", {=> jugador.consumirAgua()})
 	//si el personaje colisiona con un enemigo, llamar al metodo colisionaCon(enemigo)
 	//ej: si colisiona con araña, llamar a colisionaCon(araña)
 	//y eso hace que se llame a ese metodo en personaje que lo que hace es que
@@ -44,7 +43,8 @@ program PepitaGame {
 	game.onCollideDo(telaDeAraña, {jugador => game.removeVisual(telaDeAraña)})
 	game.onCollideDo(telaDeAraña, {jugador => jugador.agregarHilo()})
 	game.onCollideDo(agua1, {jugador => jugador.hidratarse(agua1.aguaQueAporta())})
-	
+	//agua.hidratar()
+	//y luego el jugador se hidrata
 	
 	game.addVisual(palmera1)
 	game.addVisual(telaDeAraña)

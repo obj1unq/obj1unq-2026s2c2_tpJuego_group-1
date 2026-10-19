@@ -5,7 +5,7 @@ object controler {
   }
 
   method cambiarEstado() {
-    if (estado == 5){
+    if (estado == 6){
       estado = 1
     }else{
       estado += 1

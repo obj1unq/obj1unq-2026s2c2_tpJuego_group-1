@@ -48,7 +48,7 @@ object personajeHidratacion {
   }
 
   method image() {
-    return "agua.png"
+    return "aguaIcono.png"
   } 
 }
 

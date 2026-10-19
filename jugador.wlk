@@ -20,6 +20,7 @@ method consumirAgua(){
     nivelDeAgua=proximaAgua
   }else{
     self.descontarVida(7-nivelDeAgua)
+    game.say(self, "Me estoy desidratando")
     nivelDeAgua=0
   }
 }

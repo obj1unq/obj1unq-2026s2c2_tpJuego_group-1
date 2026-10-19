@@ -1,4 +1,6 @@
 import wollok.game.*
+import controlador.controler
+
 
 object jugador {
   var vidaActualmente = 100
@@ -18,6 +20,7 @@ method consumirAgua(){
     nivelDeAgua=proximaAgua
   }else{
     self.descontarVida(7-nivelDeAgua)
+    game.say(self, "Me estoy desidratando")
     nivelDeAgua=0
   }
 }

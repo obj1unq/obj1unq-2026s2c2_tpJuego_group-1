@@ -20,6 +20,6 @@ Ahora deberá sobrevivir, explorar la isla y encontrar una forma de escapar, mie
 
 ## Otros
 
-- Curso/Facultad: Universidad Nacional de Quilmes
+- Facultad: Universidad Nacional de Quilmes
 - Versión de wollok
 - Una vez terminado, no tenemos problemas en que el repositorio sea público / queremos manternerlo privado

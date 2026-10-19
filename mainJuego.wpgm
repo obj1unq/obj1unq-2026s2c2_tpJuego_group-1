@@ -3,6 +3,9 @@ import juego.*
 import jugador.*
 import enemigos.*
 import interfaz.*
+import controlador.*
+
+
 
 const arbol1 = new Arbol(position = game.at(3,5))
 const arbol2 = new Arbol(position = game.at(5,8))
@@ -18,9 +21,14 @@ object config {
 }
 
 program PepitaGame {
-	config.configurarEscenario()
 
-	
+	config.configurarEscenario()
+	game.addVisual(controler)
+
+
+
+	game.onTick(20000, "cambirEstado", {=> controler.cambiarEstado()})
+
 	game.onTick(2000, "descontarAgua", {=> jugador.consumirAgua()})
 	//si el personaje colisiona con un enemigo, llamar al metodo colisionaCon(enemigo)
 	//ej: si colisiona con araña, llamar a colisionaCon(araña)
@@ -42,8 +50,9 @@ program PepitaGame {
 
 	//SECTOR INTERFAZ
 	game.addVisual(jugador)
-	game.addVisual(interfaz)
+	game.addVisual(fondoInterfaz)
 	game.addVisual(personajeVida)
+	game.addVisual(personajeMadera)
 	game.addVisual(personajeHidratacion) //MAL NOMBRE
 	//SECTOR INTERFAZ
 

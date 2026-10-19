@@ -14,7 +14,7 @@ class Araña {
     position = direccion.mover(self,cantidadDeCeldas)
   }
   //esto para mi lo tiene que hacer el personaje. el objeto solo existe y si el personaje interactua con el, ahi se activa un metodo del personaje
-  method interactuar(personaje) {
+  method interactuarConJugador(personaje) {
     personaje.descontarVida(10)
   }
   method ajustarDireccion() {

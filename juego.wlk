@@ -1,3 +1,4 @@
+import jugador.*
 import wollok.game.*
 
 
@@ -8,7 +9,7 @@ object telaDeAraña {
   method position() = game.at(2,4)
 
   method puedeTalar() {
-    return true
+    return false
   }
 
   method interactuarConJugador(jugador) {
@@ -87,6 +88,11 @@ class Madera {
   method image() = "madera.png"
   
   method position() = game.at(6,4)
+
+  method interactuarConJugador(jugador) {
+    jugador.agregarMadera(1) 
+    game.removeVisual(self)
+  }
 }
 
 class Agua {

@@ -1,4 +1,6 @@
 import wollok.game.*
+import controlador.controler
+
 
 object jugador {
   var vidaActualmente = 100

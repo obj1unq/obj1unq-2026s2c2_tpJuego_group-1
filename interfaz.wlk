@@ -2,7 +2,7 @@ import juego.*
 import jugador.*
 
 
-object interfaz {
+object fondoInterfaz {
 
     
   var property position = game.at(0,11)
@@ -71,9 +71,10 @@ object personajeHilo {
 }
 
 
+
   object personajeMadera {
 
-  var property position = game.at(2, 11) 
+  var property position = game.at(5, 12) 
   const property blanco = "FFFFFFFF"
 
   method text() {
@@ -85,7 +86,7 @@ object personajeHilo {
   }
 
   method image() {
-    return "madera.png"
+    return "maderaIcono.png"
   }
 
 }

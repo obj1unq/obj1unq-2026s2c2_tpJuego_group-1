@@ -83,7 +83,7 @@ class Serpiente {
     return personaje.position().down(cantidad)
   }
   method proxima(personaje){
-  return if(personaje.position().y() >= game.height() - 1) {arriba} else self
+  return if(personaje.position().y() <= 0) {arriba} else self
   }
 }
 
@@ -92,7 +92,7 @@ object arriba {
     return personaje.position().up(cantidad) 
   }
   method proxima(personaje){
-    return if (personaje.position().y() <=  0){abajo} else self
+    return if (personaje.position().y() >=  game.height() - 3){abajo} else self
   }
 }
 

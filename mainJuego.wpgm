@@ -46,6 +46,9 @@ program PepitaGame {
 	constructorAraña.construir(300,game.at(0,2))
 	constructorAraña.construir(500,game.at(10,1))
 	constructorAraña.construir(500,game.at(10,3))
+	constructorSerpiente.construir(300, game.at(5,10) )
+	constructorSerpiente.construir(300, game.at(4,10) )
+	constructorSerpiente.construir(300, game.at(3,10) )
 
 
 	//SECTOR INTERFAZ

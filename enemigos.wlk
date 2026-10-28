@@ -51,8 +51,7 @@ class Araña inherits Enemigo{
   }
 }
 
-object izquierda inherits Direccion{
-  
+object izquierda {
   method mover(personaje,cantidad) {
     return personaje.position().left(cantidad)
   }
@@ -105,9 +104,4 @@ object constructorSerpiente{
     game.addVisual(serpiente)
     game.onTick(velocidad, serpiente.identity(), {=> serpiente.mover()}) 
   }
-}
-
-
-class Direccion {
-  
 }

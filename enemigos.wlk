@@ -2,6 +2,7 @@ import juego.*
 import jugador.*
 
 
+
 class Araña {
   var property position = game.at(0, 1)
   var direccion = derecha
@@ -13,7 +14,7 @@ class Araña {
     self.ajustarDireccion()
     position = direccion.mover(self,cantidadDeCeldas)
   }
-  //esto para mi lo tiene que hacer el personaje. el objeto solo existe y si el personaje interactua con el, ahi se activa un metodo del personaje
+  
   method interactuarConJugador(personaje) {
     personaje.descontarVida(10)
   }
@@ -52,3 +53,53 @@ object constructorAraña{
   }
 }
 
+
+class Serpiente {
+  var property position
+  var direccion = abajo
+  const cantidadDeCeldas =  1
+
+  method image() = "serpiente.png"
+  
+  method mover() {
+    self.ajustarDireccion()
+    position = direccion.mover(self,cantidadDeCeldas)
+  }
+  
+  method interactuarConJugador(personaje) {
+    personaje.descontarVida(30)
+  }
+  method ajustarDireccion() {
+    direccion = direccion.proxima(self)
+  }
+  method position(){
+    return position
+  }
+}
+
+ object abajo {
+  
+  method mover(personaje,cantidad) {
+    return personaje.position().down(cantidad)
+  }
+  method proxima(personaje){
+  return if(personaje.position().y() >= game.height() - 1) {arriba} else self
+  }
+}
+
+object arriba {
+  method mover(personaje,cantidad) {
+    return personaje.position().up(cantidad) 
+  }
+  method proxima(personaje){
+    return if (personaje.position().y() <=  0){abajo} else self
+  }
+}
+
+object constructorSerpiente{
+  method construir(velocidad,posicion){
+    const serpiente = new Serpiente(position = posicion)
+    game.addVisual(serpiente)
+    game.onTick(velocidad, serpiente.identity(), {=> serpiente.mover()}) 
+  }
+}

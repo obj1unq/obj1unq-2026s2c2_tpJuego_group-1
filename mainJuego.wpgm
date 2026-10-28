@@ -22,14 +22,14 @@ object config {
 
 program PepitaGame {
 
+
 	config.configurarEscenario()
-	game.addVisual(controler)
+	game.addVisual(controladorDeDiaNoche)
 
 
-
-	game.onTick(20000, "cambirEstado", {=> controler.cambiarEstado()})
-
-	game.onTick(2000, "descontarAgua", {=> jugador.consumirAgua()})
+	//game.onTick(20000, "cambirEstado", {=> controladorDeDiaNoche.cambiarEstado()})
+	//game.onTick(2000, "descontarAgua", {=> jugador.consumirAgua()})
+	
 	//si el personaje colisiona con un enemigo, llamar al metodo colisionaCon(enemigo)
 	//ej: si colisiona con araña, llamar a colisionaCon(araña)
 	//y eso hace que se llame a ese metodo en personaje que lo que hace es que
@@ -59,7 +59,7 @@ program PepitaGame {
 	game.addVisual(personajeHidratacion) //MAL NOMBRE
 	//SECTOR INTERFAZ
 
-	game.onCollideDo(jugador, {objeto => objeto.interactuarConJugador(jugador)})
+	//game.onCollideDo(jugador, {objeto => objeto.interactuarConJugador(jugador)})
 
 
 	//SECTOR COSAS DEL MAPA
@@ -76,11 +76,16 @@ program PepitaGame {
 	//SECTOR COSAS DEL MAPA
 
 	//game.onCollideDo(agua1, {jugador => jugador.hidratarse(agua1.aguaQueAporta())})
-
+/*
 	keyboard.left().onPressDo({jugador.mover(izquierdaJugador)})
 	keyboard.right().onPressDo({jugador.mover(derechaJugador)})
 	keyboard.up().onPressDo({jugador.mover(arribaJugador)})
 	keyboard.down().onPressDo({jugador.mover(abajoJugador)})
+	*/
+	keyboard.enter().onPressDo({pantallaDeInicio.jugar()})
+
+	//MENUS
+	game.addVisual(pantallaDeInicio)
 
 	game.start()
 }

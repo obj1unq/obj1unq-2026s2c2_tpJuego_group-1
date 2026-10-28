@@ -1,5 +1,5 @@
 import wollok.game.*
-import controlador.controler
+import controlador.*
 
 
 object jugador {

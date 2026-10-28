@@ -1,30 +1,45 @@
 import juego.*
 import jugador.*
 
-
-
-class Araña {
+class Enemigo {
+    
   var property position = game.at(0, 1)
-  var direccion = derecha
-  var cantidadDeCeldas =  1
+  var property direccion
+  const cantidadDeCeldas =  1
 
-  method image() = "arana.png"
-  
   method mover() {
     self.ajustarDireccion()
     position = direccion.mover(self,cantidadDeCeldas)
   }
-  
-  method interactuarConJugador(personaje) {
-    personaje.descontarVida(10)
-  }
+
   method ajustarDireccion() {
     direccion = direccion.proxima(self)
   }
+
+  method dañoQueCausa()
+
   method position(){
     return position
   }
-  method dañoQueCausa() = 10
+
+  method image()
+
+  method interactuarConJugador(personaje) {
+    personaje.descontarVida(self.dañoQueCausa())
+  }
+
+
+}
+
+
+class Araña inherits Enemigo{
+  override method direccion() = derecha
+
+
+  override method image() = "arana.png"
+
+
+  override method dañoQueCausa() = 10
 }
 
  object derecha {
@@ -36,7 +51,8 @@ class Araña {
   }
 }
 
-object izquierda {
+object izquierda inherits Direccion{
+  
   method mover(personaje,cantidad) {
     return personaje.position().left(cantidad)
   }
@@ -47,34 +63,21 @@ object izquierda {
 
 object constructorAraña{
   method construir(velocidad,posicion){
-    const araña = new Araña(position = posicion)
+    const araña = new Araña(position = posicion, direccion = derecha)
     game.addVisual(araña)
     game.onTick(velocidad, araña.identity(), {=> araña.mover()}) 
   }
 }
 
 
-class Serpiente {
-  var property position
-  var direccion = abajo
-  const cantidadDeCeldas =  1
+class Serpiente inherits Enemigo {
 
-  method image() = "serpiente.png"
-  
-  method mover() {
-    self.ajustarDireccion()
-    position = direccion.mover(self,cantidadDeCeldas)
-  }
-  
-  method interactuarConJugador(personaje) {
-    personaje.descontarVida(30)
-  }
-  method ajustarDireccion() {
-    direccion = direccion.proxima(self)
-  }
-  method position(){
-    return position
-  }
+  override method direccion() = abajo 
+  override method image() = "serpiente.png"
+
+  override method dañoQueCausa() = 30
+
+
 }
 
  object abajo {
@@ -98,8 +101,13 @@ object arriba {
 
 object constructorSerpiente{
   method construir(velocidad,posicion){
-    const serpiente = new Serpiente(position = posicion)
+    const serpiente = new Serpiente(position = posicion, direccion = abajo )
     game.addVisual(serpiente)
     game.onTick(velocidad, serpiente.identity(), {=> serpiente.mover()}) 
   }
+}
+
+
+class Direccion {
+  
 }

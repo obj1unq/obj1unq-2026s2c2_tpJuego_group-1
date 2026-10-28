@@ -46,10 +46,6 @@ object pantallaDeInicio {
     return "pantallaDeInicio.png"
   }
 
-  method text() {
-    return "Presiona Enter"
-  }
-
   method position() {
     return game.at(0,0)
   }

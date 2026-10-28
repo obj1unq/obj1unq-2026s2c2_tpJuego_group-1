@@ -11,7 +11,6 @@ class Enemigo {
     self.ajustarDireccion()
     position = direccion.mover(self,cantidadDeCeldas)
   }
-
   method ajustarDireccion() {
     direccion = direccion.proxima(self)
   }

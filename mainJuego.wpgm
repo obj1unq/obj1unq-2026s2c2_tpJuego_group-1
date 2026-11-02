@@ -7,6 +7,7 @@ import controlador.*
 
 
 
+
 const arbol1 = new Arbol(position = game.at(3,5))
 const arbol2 = new Arbol(position = game.at(5,8))
 const arbol3 = new Arbol(position = game.at(9,5))
@@ -52,7 +53,7 @@ program PepitaGame {
 
 
 	//SECTOR INTERFAZ
-	game.addVisual(jugador)
+	//game.addVisual(jugador)
 	game.addVisual(fondoInterfaz)
 	game.addVisual(personajeVida)
 	game.addVisual(personajeMadera)
@@ -82,10 +83,15 @@ program PepitaGame {
 	keyboard.up().onPressDo({jugador.mover(arribaJugador)})
 	keyboard.down().onPressDo({jugador.mover(abajoJugador)})
 	*/
-	keyboard.enter().onPressDo({pantallaDeInicio.jugar()})
+	keyboard.enter().onPressDo({pantalla.interactuar()})
+	keyboard.left().onPressDo({jugador.mover(izquierdaJugador)})
+    keyboard.right().onPressDo({jugador.mover(derechaJugador)})
+    keyboard.up().onPressDo({jugador.mover(arribaJugador)})
+    keyboard.down().onPressDo({jugador.mover(abajoJugador)})
+
 
 	//MENUS
-	game.addVisual(pantallaDeInicio)
+	game.addVisual(pantalla)
 
 	game.start()
 }

@@ -7,12 +7,6 @@ import controlador.*
 
 
 
-
-const arbol1 = new Arbol(position = game.at(3,5))
-const arbol2 = new Arbol(position = game.at(5,8))
-const arbol3 = new Arbol(position = game.at(9,5))
-
-
 object config {
 	method configurarEscenario() {
 		game.title("TheIsla")
@@ -60,7 +54,7 @@ program PepitaGame {
 	game.addVisual(personajeHidratacion) //MAL NOMBRE
 	//SECTOR INTERFAZ
 
-	//game.onCollideDo(jugador, {objeto => objeto.interactuarConJugador(jugador)})
+	game.onCollideDo(jugador, {objeto => objeto.interactuarConJugador(jugador)})
 
 
 	//SECTOR COSAS DEL MAPA
@@ -72,8 +66,8 @@ program PepitaGame {
 	game.addVisual(agua1)
 	game.addVisual(bote)
 	game.addVisual(pico)
-	game.addVisual(serrucho)
-	game.addVisual(telaDeAraña)
+	//game.addVisual(serrucho)
+	//game.addVisual(telaDeAraña)
 	//SECTOR COSAS DEL MAPA
 
 	//game.onCollideDo(agua1, {jugador => jugador.hidratarse(agua1.aguaQueAporta())})

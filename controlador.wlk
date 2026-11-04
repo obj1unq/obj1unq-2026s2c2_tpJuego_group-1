@@ -7,6 +7,10 @@ import interfaz.*
 const timerDiaYNoche = game.tick(20000, {controladorDeDiaNoche.cambiarEstado()}, false)
 const timerDesidratacion = game.tick(2000, {jugador.consumirAgua()}, false)
 
+const arbol1 = new Arbol(position = game.at(3,5))
+const arbol2 = new Arbol(position = game.at(5,8))
+const arbol3 = new Arbol(position = game.at(9,5))
+
 object pantalla {
 
   var pantallaActual = pantallaDeInicio
@@ -54,23 +58,32 @@ object controladorDeDiaNoche {
   method image() {
     return "arenaDia" + estado + ".png"
   }
+
+  method reiniciarEstado() {
+    estado = 1
+  }
 }
 
 object pantallaDeInicio {
 
-
   method interactuar() {
-    pantalla.sinImagen()
-    game.addVisual(jugador)
+    game.addVisual(serrucho)
     jugador.empezarPartida()
+    game.addVisual(jugador)
+    arbol1.reiniciarArbol()
+    arbol2.reiniciarArbol()
+    arbol3.reiniciarArbol()
+    
+    pantalla.sinImagen()
+    controladorDeDiaNoche.reiniciarEstado()
     timerDiaYNoche.start()
     timerDesidratacion.start()
-/*     keyboard.left().onPressDo({jugador.mover(izquierdaJugador)})
-    keyboard.right().onPressDo({jugador.mover(derechaJugador)})
-    keyboard.up().onPressDo({jugador.mover(arribaJugador)})
-    keyboard.down().onPressDo({jugador.mover(abajoJugador)})
- */
-    game.onCollideDo(jugador, {objeto => objeto.interactuarConJugador(jugador)})
+
+    game.addVisual(serrucho)
+    game.addVisual(telaDeAraña)
+
+
+    timerDesidratacion.start()
   }
 
   method imagen() {
@@ -86,10 +99,14 @@ object pantallaDeInicio {
 object pantallaDeMuerte {
 
 
+
+
   method interactuar() {
     timerDiaYNoche.stop()
     timerDesidratacion.stop()
     pantalla.cambiarA(pantallaDeInicio)
+
+    
   }
 
   method imagen() {

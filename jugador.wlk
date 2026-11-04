@@ -1,11 +1,11 @@
 import wollok.game.*
-import controlador.controler
+import controlador.*
 
 
 object jugador {
   var vidaActualmente = 100
   var property nivelDeAgua = 20
-  const inventario = []
+  var inventario = []
   var property position = game.center()
   var property madera = 0
   var property hilo = 0
@@ -56,6 +56,7 @@ method hidratarse(cantidad){
   method morir() {
     vidaActualmente = 0
     game.removeVisual(self)
+    pantalla.cambiarA(pantallaDeMuerte)
   }
 
   method agregarMadera(cantidad) {
@@ -87,6 +88,17 @@ method hidratarse(cantidad){
   }
   
   method vidaActualmente() = vidaActualmente
+
+  method empezarPartida() {
+    vidaActualmente = 100
+    nivelDeAgua = 20
+    inventario = []
+    position = game.center()
+    madera = 0
+    hilo = 0
+
+  }
+
 }
 
 

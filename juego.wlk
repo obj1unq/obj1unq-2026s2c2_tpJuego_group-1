@@ -38,6 +38,10 @@ class Arbol {
       estado = talado
     }
   }
+
+  method reiniciarArbol() {
+    estado = sinTalar
+  }
 }
 
 object talado {

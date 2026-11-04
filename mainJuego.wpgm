@@ -7,11 +7,6 @@ import controlador.*
 
 
 
-const arbol1 = new Arbol(position = game.at(3,5))
-const arbol2 = new Arbol(position = game.at(5,8))
-const arbol3 = new Arbol(position = game.at(9,5))
-
-
 object config {
 	method configurarEscenario() {
 		game.title("TheIsla")
@@ -22,14 +17,14 @@ object config {
 
 program PepitaGame {
 
+
 	config.configurarEscenario()
-	game.addVisual(controler)
+	game.addVisual(controladorDeDiaNoche)
 
 
-
-	game.onTick(20000, "cambirEstado", {=> controler.cambiarEstado()})
-
-	game.onTick(2000, "descontarAgua", {=> jugador.consumirAgua()})
+	//game.onTick(20000, "cambirEstado", {=> controladorDeDiaNoche.cambiarEstado()})
+	//game.onTick(2000, "descontarAgua", {=> jugador.consumirAgua()})
+	
 	//si el personaje colisiona con un enemigo, llamar al metodo colisionaCon(enemigo)
 	//ej: si colisiona con araña, llamar a colisionaCon(araña)
 	//y eso hace que se llame a ese metodo en personaje que lo que hace es que
@@ -52,7 +47,7 @@ program PepitaGame {
 
 
 	//SECTOR INTERFAZ
-	game.addVisual(jugador)
+	//game.addVisual(jugador)
 	game.addVisual(fondoInterfaz)
 	game.addVisual(personajeVida)
 	game.addVisual(personajeMadera)
@@ -71,16 +66,24 @@ program PepitaGame {
 	game.addVisual(agua1)
 	game.addVisual(bote)
 	game.addVisual(pico)
-	game.addVisual(serrucho)
-	game.addVisual(telaDeAraña)
 	//SECTOR COSAS DEL MAPA
 
 	//game.onCollideDo(agua1, {jugador => jugador.hidratarse(agua1.aguaQueAporta())})
-
+/*
 	keyboard.left().onPressDo({jugador.mover(izquierdaJugador)})
 	keyboard.right().onPressDo({jugador.mover(derechaJugador)})
 	keyboard.up().onPressDo({jugador.mover(arribaJugador)})
 	keyboard.down().onPressDo({jugador.mover(abajoJugador)})
+	*/
+	keyboard.enter().onPressDo({pantalla.interactuar()})
+	keyboard.left().onPressDo({jugador.mover(izquierdaJugador)})
+    keyboard.right().onPressDo({jugador.mover(derechaJugador)})
+    keyboard.up().onPressDo({jugador.mover(arribaJugador)})
+    keyboard.down().onPressDo({jugador.mover(abajoJugador)})
+
+
+	//MENUS
+	game.addVisual(pantalla)
 
 	game.start()
 }

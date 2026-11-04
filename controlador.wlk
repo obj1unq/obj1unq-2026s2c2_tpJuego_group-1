@@ -90,8 +90,6 @@ object pantallaDeInicio inherits Pantalla{
     timerDiaYNoche.start()
     timerDesidratacion.start()
 
-    //game.addVisual(serrucho)
-
 
     timerDesidratacion.start()
   }

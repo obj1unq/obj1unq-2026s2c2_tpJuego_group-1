@@ -51,6 +51,7 @@ program PepitaGame {
 	game.addVisual(fondoInterfaz)
 	game.addVisual(personajeVida)
 	game.addVisual(personajeMadera)
+	game.addVisual(personajeInventario)
 	game.addVisual(personajeHidratacion) //MAL NOMBRE
 	//SECTOR INTERFAZ
 

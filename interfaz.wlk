@@ -4,7 +4,6 @@ import jugador.*
 
 object fondoInterfaz {
 
-    
   var property position = game.at(0,11)
 
   method image() {
@@ -72,7 +71,7 @@ object personajeHilo {
 
 
 
-  object personajeMadera {
+object personajeMadera {
 
   var property position = game.at(5, 12) 
   const property blanco = "FFFFFFFF"
@@ -87,6 +86,17 @@ object personajeHilo {
 
   method image() {
     return "maderaIcono.png"
+  }
+
+}
+
+object personajeInventario {
+
+  var property position = game.at(0, 12) 
+  const property blanco = "FFFFFFFF"
+
+  method image() {
+    return "maderaInventarioVacio.png"
   }
 
 }

@@ -14,7 +14,7 @@ object telaDeAraña {
 
   method interactuarConJugador(jugador) {
     jugador.agregarHilo()
-    jugador.agregarAlInventario(self)
+    //jugador.agregarAlInventario(self)
     game.removeVisual(self)
   }
 
@@ -68,22 +68,36 @@ object bote {
 
 object serrucho {
 
+  var posicion = self.positionOriginal() 
+  
   method puedeTalar() {
     return true
   }
 
+  method volverAPosicion() {
+    posicion = self.positionOriginal()
+  }
+
+  method positionOriginal() {
+    return game.at(8,4)
+  }
+
   method interactuarConJugador(jugador) {
     jugador.agregarAlInventario(self)
-    game.removeVisual(self)
+    posicion = game.at(0,12)
+    //game.removeVisual(self)
+    
   }
 
   method image() = "serrucho.png"
   
-  method position() = game.at(8, 4)
+  method position() = posicion
 }
 
 object pico {
   method image() = "pico.png"
+
+  method volverAPosicion(){}
   
   method position() = game.at(3, 2)
 }

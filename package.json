@@ -1,7 +1,7 @@
 {
     "name": "empty-game",
     "version": "1.0.0",
-    "resourceFolder": "assets",
+    "resourceFolder": "assets", 
   "wollokVersion": "4.2.3",
     "author": "leo",
     "license": "ISC"

@@ -66,8 +66,6 @@ program PepitaGame {
 	game.addVisual(agua1)
 	game.addVisual(bote)
 	game.addVisual(pico)
-	//game.addVisual(serrucho)
-	//game.addVisual(telaDeAraña)
 	//SECTOR COSAS DEL MAPA
 
 	//game.onCollideDo(agua1, {jugador => jugador.hidratarse(agua1.aguaQueAporta())})

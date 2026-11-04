@@ -11,6 +11,16 @@ const arbol1 = new Arbol(position = game.at(3,5))
 const arbol2 = new Arbol(position = game.at(5,8))
 const arbol3 = new Arbol(position = game.at(9,5))
 
+
+class Pantalla {
+  method position() {
+    return game.at(0, 0)
+  }
+
+  method interactuar() {}
+}
+
+
 object pantalla {
 
   var pantallaActual = pantallaDeInicio
@@ -64,10 +74,11 @@ object controladorDeDiaNoche {
   }
 }
 
-object pantallaDeInicio {
+object pantallaDeInicio inherits Pantalla{
 
-  method interactuar() {
+  override method interactuar() {
     game.addVisual(serrucho)
+    game.addVisual(telaDeAraña)
     jugador.empezarPartida()
     game.addVisual(jugador)
     arbol1.reiniciarArbol()
@@ -79,8 +90,7 @@ object pantallaDeInicio {
     timerDiaYNoche.start()
     timerDesidratacion.start()
 
-    game.addVisual(serrucho)
-    game.addVisual(telaDeAraña)
+    //game.addVisual(serrucho)
 
 
     timerDesidratacion.start()
@@ -90,18 +100,12 @@ object pantallaDeInicio {
     return "pantallaDeInicio.png"
   }
 
-  method position() {
-    return game.at(0,0)
-  }
 }
 
 
-object pantallaDeMuerte {
+object pantallaDeMuerte inherits Pantalla{
 
-
-
-
-  method interactuar() {
+  override method interactuar() {
     timerDiaYNoche.stop()
     timerDesidratacion.stop()
     pantalla.cambiarA(pantallaDeInicio)
@@ -113,24 +117,12 @@ object pantallaDeMuerte {
     return "pantallaDeMuerte.png"
   }
 
-  method position() {
-    return game.at(0,0)
-  }
 }
 
-object sinPantalla {
+object sinPantalla inherits Pantalla {
 
   method imagen() {
     return "sinPantalla.png"
   }
-
-  method position() {
-    return game.at(0,0)
-  }
-
-  
-  method interactuar() {
-  }
-
   
 }

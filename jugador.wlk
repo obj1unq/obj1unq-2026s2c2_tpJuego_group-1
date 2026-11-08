@@ -64,6 +64,7 @@ object jugador {
   }
 
   method eliminarATodosDelInventario() {
+    inventario.clear()
     inventario.forEach({item => game.removeVisual(item)})
   }
 

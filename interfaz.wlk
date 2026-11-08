@@ -1,5 +1,8 @@
+import controlador.*
 import juego.*
 import jugador.*
+
+
 
 
 
@@ -23,17 +26,6 @@ class PersonajeInformacion {
   method valorAMostrar()
 
   method image()
-}
-
-
-object fondoInterfaz{
-
-  var property position = game.at(0,11)
-
-  method image() {
-    return "interfaz.png"
-  }
-
 }
 
 
@@ -117,4 +109,59 @@ object personajeInventario inherits PersonajeInformacion{
     return "maderaInventarioVacio.png"
   }
 
+}
+
+
+object fondoInterfaz{
+
+  var property position = game.at(0,11)
+
+  method image() {
+    return "interfaz.png"
+  }
+
+}
+
+
+object estadoDelDia {
+
+  var estado = dia
+
+  method position() {
+    return game.at(0,11)
+  }
+
+  method image() {
+    return estado.image()
+  }
+
+  method cambiarEstado() {
+    estado = estado.siguiente()
+  }
+
+  method reiniciarDia() {
+    estado = noche
+  }
+  
+}
+
+object dia {
+  method image() {
+    return "logoSol.png"
+  }
+
+  method siguiente() {
+    return noche
+  }
+}
+
+object noche {
+  method image() {
+    return "logoLuna.png"
+  }
+
+  
+  method siguiente() {
+    return dia
+  }
 }

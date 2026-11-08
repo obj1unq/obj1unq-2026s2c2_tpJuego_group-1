@@ -36,37 +36,122 @@ object creadorDeMurcielagos {
 
 
 object controladorDeDiaNoche {
-    var estado = 1
+  var estado = estadoInicial
+
   method estado() {
     return estado
   }
 
-  method cambiarEstado() {
-    if (estado == 6){
-      estado = 1
-      timerMurcielagos.stop()
-    }else{
-      estado += 1
-      self.ponerMurcielagos()
-    }
+  method image() {
+    return estado.image()
   }
 
-  method ponerMurcielagos() {
-    if ( estado == 2){
-      timerMurcielagos.start()
-    }
+  method position() {
+    return estado.position()
   }
+
+  method cambiarEstado() {
+    estado = estado.estadoSiguiente()
+    estado.realizarAccion()
+  }
+
+  method reiniciarEstado() {
+    estado = estadoInicial
+    estado.realizarAccion()
+  }
+}
+
+
+class EstadoDia {
+  
+  method image()
+
+  method estadoSiguiente() 
+
+  method realizarAccion() {}
 
   method position() {
     return game.at(0, 0)
   }
 
-  method image() {
-    return "arenaDia" + estado + ".png"
+}
+
+object estadoInicial inherits EstadoDia {
+  override method image(){
+    return "arenaDia1.png"
   }
 
-  method reiniciarEstado() {
-    estado = 1
+  override method estadoSiguiente(){
+    return estadoInicialSegundo
+  }
+
+  override method realizarAccion(){
+    estadoDelDia.cambiarEstado()
+  }
+
+}
+
+
+object estadoInicialSegundo inherits EstadoDia {
+  override method image(){
+    return "arenaDia2.png"
+  }
+
+  override method estadoSiguiente(){
+    return estadoInicialTercero
   }
 }
 
+object estadoInicialTercero inherits EstadoDia {
+  override method image(){
+    return "arenaDia3.png"
+  }
+
+  override method estadoSiguiente(){
+    return estadoPreNocheInicial
+  }  
+}
+
+object estadoPreNocheInicial inherits EstadoDia {
+  override method image(){
+    return "arenaDia4.png"
+  }
+
+  override method estadoSiguiente(){
+    return estadoNocheInicial
+  }    
+}
+
+object estadoNocheInicial inherits EstadoDia {
+  override method image(){
+    return "arenaDia5.png"
+  }
+
+  override method estadoSiguiente(){
+    return estadoNoche
+  }
+
+  override method realizarAccion(){
+    estadoDelDia.cambiarEstado()
+    timerMurcielagos.start()
+  }  
+
+  
+
+
+}
+
+object estadoNoche inherits EstadoDia {
+  override method image(){
+    return "arenaDia6.png"
+  }
+
+  override method estadoSiguiente(){
+    return estadoInicial
+  }
+
+  
+  override method realizarAccion(){
+    timerMurcielagos.stop()
+  }  
+}

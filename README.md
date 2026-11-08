@@ -12,7 +12,10 @@ Ahora deberá sobrevivir, explorar la isla y encontrar una forma de escapar, mie
 
 ## Capturas
 
-(agregar)
+<p align="center">
+     <b>The Isla<b><br>
+    <img src="assets/portada.jpg">
+</p>
 
 ## Reglas de Juego / Instrucciones
 

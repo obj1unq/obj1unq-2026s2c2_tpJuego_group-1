@@ -51,6 +51,7 @@ object pantalla {
 object pantallaDeInicio inherits Pantalla{
 
   override method interactuar() {
+    estadoDelDia.reiniciarDia()
     game.addVisual(serrucho)
     serrucho.volverAPosicion()
     game.addVisual(pico)

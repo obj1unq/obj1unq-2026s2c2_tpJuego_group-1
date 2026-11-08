@@ -50,6 +50,7 @@ program PepitaGame {
 	//SECTOR INTERFAZ
 	//game.addVisual(jugador)
 	game.addVisual(fondoInterfaz)
+	game.addVisual(estadoDelDia)
 	game.addVisual(personajeVida)
 	game.addVisual(personajeMadera)
 	game.addVisual(personajeHilo)

@@ -1,5 +1,7 @@
 import wollok.game.*
 import controlador.*
+import pantallas.*
+
 
 
 object jugador {
@@ -14,20 +16,16 @@ object jugador {
   
   //un solo metodo
 
-method consumirAgua(){
-  const proximaAgua = nivelDeAgua-6
-  if(proximaAgua >=0){
-    nivelDeAgua=proximaAgua
-  }else{
-    self.descontarVida(7-nivelDeAgua)
-    game.say(self, "Me estoy desidratando")
-    nivelDeAgua=0
+  method consumirAgua(){
+    const proximaAgua = nivelDeAgua-6
+    if(proximaAgua >=0){
+      nivelDeAgua=proximaAgua
+    }else{
+      self.descontarVida(7-nivelDeAgua)
+      game.say(self, "Me estoy desidratando")
+      nivelDeAgua=0
+    }
   }
-}
-
-
-  //metodos de prueba
-  //method text() = position.y().toString() //vidaActualmente.toString()
   
   method hiloActual() {
     return hilo
@@ -44,9 +42,9 @@ method consumirAgua(){
   }
 
   
-method hidratarse(cantidad){
-  nivelDeAgua = nivelDeAgua + cantidad
-}
+  method hidratarse(cantidad){
+    nivelDeAgua = nivelDeAgua + cantidad
+  }
 
   method agregarAlInventario(item) {
     inventario.add(item)
@@ -57,7 +55,7 @@ method hidratarse(cantidad){
     vidaActualmente = 0
     game.removeVisual(self)
     self.eliminarATodosDelInventario()
-    creadorDeMurcielagos.sacarTodosLosMurcielagos()
+    creadorDeMurcielagos.sacarTodosLosMurcielagos() //Por ahora
     pantalla.jugadorAMuerto(pantallaDeMuerte)
   }
 
@@ -108,7 +106,8 @@ method hidratarse(cantidad){
 }
 
 
-//direcciones
+//direcciones 
+//Poner Class
 object izquierdaJugador {
 
     method siguiente(posicion) {

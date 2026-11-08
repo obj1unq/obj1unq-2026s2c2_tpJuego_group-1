@@ -4,6 +4,7 @@ import jugador.*
 import enemigos.*
 import interfaz.*
 import controlador.*
+import pantallas.*
 
 
 

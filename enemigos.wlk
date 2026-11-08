@@ -1,3 +1,4 @@
+import controlador.*
 import juego.*
 import jugador.*
 
@@ -77,6 +78,33 @@ class Serpiente inherits Enemigo {
 
 
 }
+
+
+class Murcielago inherits Enemigo {
+
+  override method direccion() = abajo 
+
+  override method image() = "murcielago.png"
+
+  override method dañoQueCausa() = 5 
+
+  override method interactuarConJugador(personaje) {
+    personaje.descontarVida(self.dañoQueCausa())
+    game.removeVisual(self)
+  }
+
+}
+
+object constructorMurcielago{
+  method construir(velocidad,posicion){
+    const murcielago = new Murcielago(position = posicion, direccion = abajo )
+    game.addVisual(murcielago)
+    game.onTick(velocidad, murcielago.identity(), {=> murcielago.mover()})
+    creadorDeMurcielagos.añadorMurcielago(murcielago)
+  }
+}
+
+
 
  object abajo {
   

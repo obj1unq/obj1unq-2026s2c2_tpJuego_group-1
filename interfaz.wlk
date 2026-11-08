@@ -10,7 +10,6 @@ object fondoInterfaz {
     return "interfaz.png"
   }
 
-
 }
 
 

@@ -57,6 +57,7 @@ method hidratarse(cantidad){
     vidaActualmente = 0
     game.removeVisual(self)
     self.eliminarATodosDelInventario()
+    creadorDeMurcielagos.sacarTodosLosMurcielagos()
     pantalla.jugadorAMuerto(pantallaDeMuerte)
   }
 

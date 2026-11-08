@@ -57,7 +57,7 @@ method hidratarse(cantidad){
     vidaActualmente = 0
     game.removeVisual(self)
     self.eliminarATodosDelInventario()
-    pantalla.cambiarA(pantallaDeMuerte)
+    pantalla.jugadorAMuerto(pantallaDeMuerte)
   }
 
   method agregarMadera(cantidad) {

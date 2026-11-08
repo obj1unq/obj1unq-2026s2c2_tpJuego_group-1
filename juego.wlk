@@ -14,10 +14,8 @@ object telaDeAraña {
 
   method interactuarConJugador(jugador) {
     jugador.agregarHilo()
-    //jugador.agregarAlInventario(self)
     game.removeVisual(self)
   }
-
 
 }
 
@@ -25,7 +23,7 @@ class Arbol {
   var property estado = sinTalar
   //const x = 0.randomUpTo(game.width()).truncate(0)
   //const y = 0.randomUpTo(game.height()).truncate(0)
-  //por ahora esto no es necesario, pero eventualmente podriamos hacer esto: const property maderaQueDa = 3
+  
   var property position = game.center() //game.center()
 
   
@@ -85,8 +83,6 @@ object serrucho {
   method interactuarConJugador(jugador) {
     jugador.agregarAlInventario(self)
     posicion = game.at(0,12)
-    //game.removeVisual(self)
-    
   }
 
   method image() = "serrucho.png"
@@ -97,9 +93,22 @@ object serrucho {
 object pico {
   method image() = "pico.png"
 
-  method volverAPosicion(){}
+  var posicion = self.positionOriginal() 
+
+  method volverAPosicion(){
+      posicion = self.positionOriginal()
+  }
+
+  method interactuarConJugador(jugador) {
+    jugador.agregarAlInventario(self)
+    posicion = game.at(1,12)
+  }
+
+  method positionOriginal() {
+    return game.at(3, 2)
+  }
   
-  method position() = game.at(3, 2)
+  method position() = posicion
 }
 
 class Madera {

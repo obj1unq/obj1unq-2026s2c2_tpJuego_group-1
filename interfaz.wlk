@@ -53,7 +53,7 @@ object personajeHidratacion {
 
 object personajeHilo {
 
-  var property position = game.at(2, 11) 
+  var property position = game.at(5, 11) 
   const property blanco = "FFFFFFFF"
 
   method text() {
@@ -65,7 +65,7 @@ object personajeHilo {
   }
 
   method image() {
-    return "telaArana.png"
+    return "hiloIcono.png"
   }
 }
 
@@ -89,6 +89,8 @@ object personajeMadera {
   }
 
 }
+
+
 
 object personajeInventario {
 

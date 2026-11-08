@@ -51,6 +51,7 @@ program PepitaGame {
 	game.addVisual(fondoInterfaz)
 	game.addVisual(personajeVida)
 	game.addVisual(personajeMadera)
+	game.addVisual(personajeHilo)
 	game.addVisual(personajeInventario)
 	game.addVisual(personajeHidratacion) //MAL NOMBRE
 	//SECTOR INTERFAZ
@@ -66,7 +67,6 @@ program PepitaGame {
 	game.addVisual(new Madera())
 	game.addVisual(agua1)
 	game.addVisual(bote)
-	game.addVisual(pico)
 	//SECTOR COSAS DEL MAPA
 
 	//game.onCollideDo(agua1, {jugador => jugador.hidratarse(agua1.aguaQueAporta())})

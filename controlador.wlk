@@ -33,6 +33,14 @@ object pantalla {
     pantallaActual = pantallaNueva
   }
 
+  method jugadorAMuerto(pantalla) {
+    game.removeVisual(telaDeAraña)
+    game.removeVisual(serrucho)
+    game.removeVisual(pico)
+    
+    pantallaActual = pantalla
+  }
+
   method interactuar() {
     pantallaActual.interactuar()
   }
@@ -78,6 +86,9 @@ object pantallaDeInicio inherits Pantalla{
 
   override method interactuar() {
     game.addVisual(serrucho)
+    serrucho.volverAPosicion()
+    game.addVisual(pico)
+    pico.volverAPosicion()
     game.addVisual(telaDeAraña)
     jugador.empezarPartida()
     game.addVisual(jugador)
@@ -107,8 +118,6 @@ object pantallaDeMuerte inherits Pantalla{
     timerDiaYNoche.stop()
     timerDesidratacion.stop()
     pantalla.cambiarA(pantallaDeInicio)
-
-    
   }
 
   method imagen() {

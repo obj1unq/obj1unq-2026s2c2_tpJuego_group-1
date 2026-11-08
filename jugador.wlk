@@ -56,11 +56,16 @@ method hidratarse(cantidad){
   method morir() {
     vidaActualmente = 0
     game.removeVisual(self)
-    pantalla.cambiarA(pantallaDeMuerte)
+    self.eliminarATodosDelInventario()
+    pantalla.jugadorAMuerto(pantallaDeMuerte)
   }
 
   method agregarMadera(cantidad) {
     madera += cantidad
+  }
+
+  method eliminarATodosDelInventario() {
+    inventario.forEach({item => game.removeVisual(item)})
   }
 
   

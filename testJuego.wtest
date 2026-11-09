@@ -16,7 +16,7 @@ describe "group of tests for player" {
 
 }
 
-describe "Vida del Jugador" {
+describe "Test sobre Jugador" {
 
   method initialize() {
     config.configurarEscenario()
@@ -32,6 +32,16 @@ describe "Vida del Jugador" {
     assert.notThat(game.hasVisual(jugador))
   }
 
+  test "Agregar Y sacar en Inventario"{
+    jugador.agregarAlInventario(serrucho)
+    jugador.agregarAlInventario(pico)
+    assert.equals([serrucho,pico], jugador.inventarioActual())
+
+    jugador.eliminarATodosDelInventario()
+
+    assert.equals([], jugador.inventarioActual())
+
+  }
 }
 
 describe "Logica de agarrar Objeto" {

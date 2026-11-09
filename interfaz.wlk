@@ -1,90 +1,93 @@
+import controlador.*
 import juego.*
 import jugador.*
 
 
-object fondoInterfaz {
-
-  var property position = game.at(0,11)
-
-  method image() {
-    return "interfaz.png"
-  }
-
-
-}
 
 
 
-object personajeVida {
-
-  var property position = game.at(7, 12) 
+class PersonajeInformacion {
   const property blanco = "FFFFFFFF"
-
-  method text() {
-    return  (jugador.vidaActualmente()).toString()
-  }
 
   method textColor() {
     return blanco
   }
 
-  method image() {
+  method position() {
+    return self.posicionEnPantalla()
+  }
+
+  method text() {
+    return  self.valorAMostrar().toString()
+  }
+
+  method posicionEnPantalla()
+
+  method valorAMostrar()
+
+  method image()
+}
+
+
+object personajeVida inherits PersonajeInformacion{
+
+  override method posicionEnPantalla(){
+    return game.at(7, 12) 
+  }
+
+  override method valorAMostrar() {
+    return jugador.vidaActualmente()
+  }
+
+  override method image() {
     return "corazon.png"
   } 
+
 }
 
-object personajeHidratacion {
+object personajeHidratacion inherits PersonajeInformacion{
 
-  var property position = game.at(7, 11) 
-  const property blanco = "FFFFFFFF"
-
-  method text() {
-    return  (jugador.nivelDeAgua()).toString()
+  override method valorAMostrar() {
+    return  jugador.nivelDeAgua()
   }
 
-  method textColor() {
-    return blanco
+  override method posicionEnPantalla(){
+    return game.at(7, 11) 
   }
 
-  method image() {
+  override method image() {
     return "aguaIcono.png"
   } 
 }
 
-object personajeHilo {
+object personajeHilo inherits PersonajeInformacion{
 
-  var property position = game.at(5, 11) 
-  const property blanco = "FFFFFFFF"
-
-  method text() {
-    return  (jugador.hilo()).toString()
+  override method valorAMostrar() {
+    return  jugador.hilo()
   }
 
-  method textColor() {
-    return blanco
+  override method posicionEnPantalla(){
+    return game.at(5, 11)  
   }
 
-  method image() {
+  override method image() {
     return "hiloIcono.png"
   }
 }
 
 
 
-object personajeMadera {
+object personajeMadera inherits PersonajeInformacion{
 
-  var property position = game.at(5, 12) 
-  const property blanco = "FFFFFFFF"
-
-  method text() {
-    return  (jugador.madera()).toString()
+  override method valorAMostrar() {
+    return  jugador.madera()
   }
 
-  method textColor() {
-    return blanco
+  override method posicionEnPantalla(){
+    return game.at(5, 12)   
   }
 
-  method image() {
+  override method image() {
     return "maderaIcono.png"
   }
 
@@ -92,13 +95,73 @@ object personajeMadera {
 
 
 
-object personajeInventario {
+object personajeInventario inherits PersonajeInformacion{
 
-  var property position = game.at(0, 12) 
-  const property blanco = "FFFFFFFF"
+  override method valorAMostrar() {
+    return " "
+  }
 
-  method image() {
+  override method posicionEnPantalla(){
+    return game.at(0, 12) 
+  }
+
+  override method image() {
     return "maderaInventarioVacio.png"
   }
 
+}
+
+
+object fondoInterfaz{
+
+  var property position = game.at(0,11)
+
+  method image() {
+    return "interfaz.png"
+  }
+
+}
+
+
+object estadoDelDia {
+
+  var estado = dia
+
+  method position() {
+    return game.at(0,11)
+  }
+
+  method image() {
+    return estado.image()
+  }
+
+  method cambiarEstado() {
+    estado = estado.siguiente()
+  }
+
+  method reiniciarDia() {
+    estado = noche
+  }
+  
+}
+
+object dia {
+  method image() {
+    return "logoSol.png"
+  }
+
+  method siguiente() {
+    return noche
+  }
+}
+
+object noche {
+  method image() {
+    return "logoLuna.png"
+  }
+
+  
+  method siguiente() {
+    return dia
+  }
 }

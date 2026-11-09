@@ -72,12 +72,7 @@ program PepitaGame {
 	//SECTOR COSAS DEL MAPA
 
 	//game.onCollideDo(agua1, {jugador => jugador.hidratarse(agua1.aguaQueAporta())})
-/*
-	keyboard.left().onPressDo({jugador.mover(izquierdaJugador)})
-	keyboard.right().onPressDo({jugador.mover(derechaJugador)})
-	keyboard.up().onPressDo({jugador.mover(arribaJugador)})
-	keyboard.down().onPressDo({jugador.mover(abajoJugador)})
-	*/
+
 	keyboard.enter().onPressDo({pantalla.interactuar()})
 	keyboard.left().onPressDo({jugador.mover(izquierdaJugador)})
     keyboard.right().onPressDo({jugador.mover(derechaJugador)})

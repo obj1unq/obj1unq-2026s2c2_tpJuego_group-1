@@ -32,6 +32,16 @@ describe "Test sobre Jugador" {
     assert.notThat(game.hasVisual(jugador))
   }
 
+    test "Desidratar e hidratar al jugador" {
+      const agua1 = new Agua()
+      jugador.consumirAgua()
+      assert.equals(14, jugador.nivelDeAgua())
+      jugador.hidratarse(agua1.aguaQueAporta())
+      assert.equals(19, jugador.nivelDeAgua())
+      jugador.hidratarse(150)
+      assert.equals(100, jugador.nivelDeAgua())
+    }
+
   test "Agregar Y sacar en Inventario"{
     jugador.agregarAlInventario(serrucho)
     jugador.agregarAlInventario(llave)

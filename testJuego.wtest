@@ -42,6 +42,7 @@ describe "Test sobre Jugador" {
       assert.equals(100, jugador.nivelDeAgua())
     }
 
+
   test "Agregar Y sacar en Inventario"{
     jugador.agregarAlInventario(serrucho)
     jugador.agregarAlInventario(llave)

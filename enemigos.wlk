@@ -1,4 +1,4 @@
-import controlador.*
+import controlador
 import juego.*
 import jugador.*
 
@@ -42,7 +42,7 @@ class Araña inherits Enemigo{
   override method dañoQueCausa() = 10
 }
 
- object derecha {
+object derecha {
   method mover(personaje,cantidad) {
     return personaje.position().right(cantidad)
   }

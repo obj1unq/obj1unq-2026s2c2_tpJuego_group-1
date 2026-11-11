@@ -139,18 +139,68 @@ object estadoNocheInicial inherits EstadoDia {
   }  
 
   
+}
+
+override method realizarAccion(){
+    estadoDelDia.cambiarEstado() 
+}
 
 
+
+object estadoInicialSegundo inherits EstadoDia {
+  override method image(){
+    return "arenaDia2.png"
+  }
+
+  override method estadoSiguiente(){
+    return estadoInicialTercero
+  }
+}
+
+object estadoInicialTercero inherits EstadoDia {
+  override method image(){
+    return "arenaDia3.png"
+  }
+
+  override method estadoSiguiente(){
+    return estadoPreNocheInicial
+  }  
+}
+
+object estadoPreNocheInicial inherits EstadoDia {
+  override method image(){
+    return "arenaDia4.png"
+  }
+
+  override method estadoSiguiente(){
+    return estadoNocheInicial
+  }    
+}
+
+
+object estadoNocheInicial inherits EstadoDia {
+
+  override method image(){
+    return "arenaDia5.png"
+  }
+
+  override method estadoSiguiente(){
+    return estadoNoche
+  }
+
+  override method realizarAccion(){
+    estadoDelDia.cambiarEstado()
+    timerMurcielagos.start()
+  }  
 }
 
 object estadoNoche inherits EstadoDia {
   override method image(){
     return "arenaDia6.png"
   }
-
+ 
   override method estadoSiguiente(){
     return estadoInicial
   }
-
 
 }

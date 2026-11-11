@@ -44,7 +44,6 @@ object jugador {
   
   method hidratarse(cantidad){
     nivelDeAgua = 100.min(nivelDeAgua + cantidad)
-    nivelDeAgua = nivelDeAgua + cantidad
   }
 
   method agregarAlInventario(item) {

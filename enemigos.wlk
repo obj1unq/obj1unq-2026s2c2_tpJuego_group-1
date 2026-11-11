@@ -1,6 +1,6 @@
-import controlador
 import juego.*
 import jugador.*
+import controlador.*
 
 class Enemigo {
     

@@ -87,6 +87,8 @@ object estadoInicial inherits EstadoDia {
 
   override method realizarAccion(){
     estadoDelDia.cambiarEstado()
+    timerMurcielagos.stop()
+  
   }
 
 }
@@ -150,8 +152,5 @@ object estadoNoche inherits EstadoDia {
     return estadoInicial
   }
 
-  
-  override method realizarAccion(){
-    timerMurcielagos.stop()
-  }  
+
 }

@@ -34,8 +34,8 @@ describe "Test sobre Jugador" {
 
   test "Agregar Y sacar en Inventario"{
     jugador.agregarAlInventario(serrucho)
-    jugador.agregarAlInventario(pico)
-    assert.equals([serrucho,pico], jugador.inventarioActual())
+    jugador.agregarAlInventario(llave)
+    assert.equals([serrucho,llave], jugador.inventarioActual())
 
     jugador.eliminarATodosDelInventario()
 

@@ -4,9 +4,10 @@ import jugador.*
 import enemigos.*
 import interfaz.*
 import controlador.*
+import items.*
 
 
-class Pantalla {
+class Escena {
   method position() {
     return game.at(0, 0)
   }
@@ -15,16 +16,16 @@ class Pantalla {
 }
 
 
-object pantalla {
+object controladorDeEscenas {
 
-  var pantallaActual = pantallaDeInicio
+  var escenaActual = escenaDeInicio
 
   method image() {
-    return pantallaActual.imagen()
+    return escenaActual.imagen()
   }
 
   method cambiarA(pantallaNueva) {
-    pantallaActual = pantallaNueva
+    escenaActual = pantallaNueva
   }
 
   method jugadorAMuerto(pantalla) {
@@ -32,23 +33,23 @@ object pantalla {
     game.removeVisual(serrucho)
     game.removeVisual(llave)
     
-    pantallaActual = pantalla
+    escenaActual = pantalla
   }
 
   method interactuar() {
-    pantallaActual.interactuar()
+    escenaActual.interactuar()
   }
 
   method position() {
-    return pantallaActual.position()
+    return escenaActual.position()
   }
 
-  method sinImagen() {
-    pantallaActual = sinPantalla
+  method cambiarAEscenaDeJuego() {
+    escenaActual = escenaJugable
   }
 }
 
-object pantallaDeInicio inherits Pantalla{
+object escenaDeInicio inherits Escena{
 
   override method interactuar() {
     estadoDelDia.reiniciarDia()
@@ -63,7 +64,7 @@ object pantallaDeInicio inherits Pantalla{
     arbol2.reiniciarArbol()
     arbol3.reiniciarArbol()
     
-    pantalla.sinImagen()
+    controladorDeEscenas.cambiarAEscenaDeJuego()
     controladorDeDiaNoche.reiniciarEstado()
     timerDiaYNoche.start()
     timerDesidratacion.start()
@@ -79,13 +80,13 @@ object pantallaDeInicio inherits Pantalla{
 }
 
 
-object pantallaDeMuerte inherits Pantalla{
+object escenaDeMuerte inherits Escena{
 
   override method interactuar() {
     timerDiaYNoche.stop()
     timerDesidratacion.stop()
     timerMurcielagos.stop()
-    pantalla.cambiarA(pantallaDeInicio)
+    controladorDeEscenas.cambiarA(escenaDeInicio)
   }
 
   method imagen() {
@@ -94,7 +95,7 @@ object pantallaDeMuerte inherits Pantalla{
 
 }
 
-object sinPantalla inherits Pantalla {
+object escenaJugable inherits Escena {
 
   override method interactuar() {}
 

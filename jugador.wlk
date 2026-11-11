@@ -56,7 +56,7 @@ object jugador {
     game.removeVisual(self)
     self.eliminarATodosDelInventario()
     creadorDeMurcielagos.sacarTodosLosMurcielagos() //Por ahora
-    pantalla.jugadorAMuerto(pantallaDeMuerte)
+    controladorDeEscenas.jugadorAMuerto(escenaDeMuerte)
   }
 
   method agregarMadera(cantidad) {

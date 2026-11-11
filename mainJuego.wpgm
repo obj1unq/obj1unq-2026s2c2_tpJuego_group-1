@@ -5,6 +5,8 @@ import enemigos.*
 import interfaz.*
 import controlador.*
 import pantallas.*
+import items.*
+
 
 
 
@@ -73,7 +75,7 @@ program PepitaGame {
 
 	//game.onCollideDo(agua1, {jugador => jugador.hidratarse(agua1.aguaQueAporta())})
 
-	keyboard.enter().onPressDo({pantalla.interactuar()})
+	keyboard.enter().onPressDo({controladorDeEscenas.interactuar()})
 	keyboard.left().onPressDo({jugador.mover(izquierdaJugador)})
     keyboard.right().onPressDo({jugador.mover(derechaJugador)})
     keyboard.up().onPressDo({jugador.mover(arribaJugador)})
@@ -81,7 +83,7 @@ program PepitaGame {
 
 
 	//MENUS
-	game.addVisual(pantalla)
+	game.addVisual(controladorDeEscenas)
 
 	game.start()
 }

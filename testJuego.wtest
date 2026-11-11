@@ -1,6 +1,8 @@
 import juego.*
 import mainJuego.config
 import jugador.jugador
+import items.*
+
 
 //import wollok.game.*
 

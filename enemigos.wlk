@@ -3,9 +3,8 @@ import jugador.*
 import controlador.*
 
 class Enemigo {
-    
   var property position = game.at(0, 1)
-  var property direccion
+  var direccion
   const cantidadDeCeldas =  1
 
   method mover() {
@@ -27,7 +26,6 @@ class Enemigo {
   method interactuarConJugador(personaje) {
     personaje.descontarVida(self.dañoQueCausa())
   }
-
 
 }
 

@@ -20,7 +20,7 @@ object creadorDeMurcielagos {
 
   method crearMurcielago() {
      const x = 0.randomUpTo(game.width()).truncate(0)
-     constructorMurcielago.construir(50,game.at(x,10))
+     constructorMurcielago.construir(150,game.at(x,10))
   }
 
   method añadorMurcielago(murcielago) {

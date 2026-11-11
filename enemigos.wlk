@@ -1,6 +1,6 @@
-import controlador.*
 import juego.*
 import jugador.*
+import controlador.*
 
 class Enemigo {
     
@@ -32,9 +32,7 @@ class Enemigo {
 }
 
 
-class Araña inherits Enemigo{
-  override method direccion() = derecha
-
+class Araña inherits Enemigo(direccion = derecha) {
 
   override method image() = "arana.png"
 
@@ -42,7 +40,7 @@ class Araña inherits Enemigo{
   override method dañoQueCausa() = 10
 }
 
- object derecha {
+object derecha {
   method mover(personaje,cantidad) {
     return personaje.position().right(cantidad)
   }
@@ -69,20 +67,17 @@ object constructorAraña{
 }
 
 
-class Serpiente inherits Enemigo {
+class Serpiente inherits Enemigo (direccion = abajo) {
 
-  override method direccion() = abajo 
   override method image() = "serpiente.png"
 
   override method dañoQueCausa() = 30
 
-
 }
 
 
-class Murcielago inherits Enemigo {
+class Murcielago inherits Enemigo(direccion = abajo) {
 
-  override method direccion() = abajo 
 
   override method image() = "murcielago.png"
 
@@ -90,7 +85,7 @@ class Murcielago inherits Enemigo {
 
   override method interactuarConJugador(personaje) {
     personaje.descontarVida(self.dañoQueCausa())
-    game.removeVisual(self)
+    game.removeVisual(self) //Cuando Ataca al jugador, se muere
   }
 
 }
@@ -106,7 +101,7 @@ object constructorMurcielago{
 
 
 
- object abajo {
+object abajo {
   
   method mover(personaje,cantidad) {
     return personaje.position().down(cantidad)

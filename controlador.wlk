@@ -20,7 +20,7 @@ object creadorDeMurcielagos {
 
   method crearMurcielago() {
      const x = 0.randomUpTo(game.width()).truncate(0)
-     constructorMurcielago.construir(100,game.at(x,10))
+     constructorMurcielago.construir(150,game.at(x,10))
   }
 
   method añadorMurcielago(murcielago) {
@@ -87,10 +87,11 @@ object estadoInicial inherits EstadoDia {
 
   override method realizarAccion(){
     estadoDelDia.cambiarEstado()
+    timerMurcielagos.stop()
+  
   }
 
 }
-
 
 object estadoInicialSegundo inherits EstadoDia {
   override method image(){
@@ -122,7 +123,9 @@ object estadoPreNocheInicial inherits EstadoDia {
   }    
 }
 
+
 object estadoNocheInicial inherits EstadoDia {
+
   override method image(){
     return "arenaDia5.png"
   }
@@ -135,23 +138,15 @@ object estadoNocheInicial inherits EstadoDia {
     estadoDelDia.cambiarEstado()
     timerMurcielagos.start()
   }  
-
-  
-
-
 }
 
 object estadoNoche inherits EstadoDia {
   override method image(){
     return "arenaDia6.png"
   }
-
+ 
   override method estadoSiguiente(){
     return estadoInicial
   }
 
-  
-  override method realizarAccion(){
-    timerMurcielagos.stop()
-  }  
 }

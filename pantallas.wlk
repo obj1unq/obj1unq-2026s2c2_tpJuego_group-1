@@ -30,7 +30,7 @@ object pantalla {
   method jugadorAMuerto(pantalla) {
     game.removeVisual(telaDeAraña) //Elimino loss objetos del inventario
     game.removeVisual(serrucho)
-    game.removeVisual(pico)
+    game.removeVisual(llave)
     
     pantallaActual = pantalla
   }
@@ -54,8 +54,8 @@ object pantallaDeInicio inherits Pantalla{
     estadoDelDia.reiniciarDia()
     game.addVisual(serrucho)
     serrucho.volverAPosicion()
-    game.addVisual(pico)
-    pico.volverAPosicion()
+    game.addVisual(llave)
+    llave.volverAPosicion()
     game.addVisual(telaDeAraña)
     jugador.empezarPartida()
     game.addVisual(jugador)

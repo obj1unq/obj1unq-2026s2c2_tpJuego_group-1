@@ -3,6 +3,8 @@ import wollok.game.*
 
 
 
+
+
 object telaDeAraña {
   method image() = "telaArana.png"
   
@@ -31,9 +33,15 @@ class Arbol {
 
 
   method interactuarConJugador(jugador) {
-    if (jugador.tieneHerramientaQueCortaArbol()){
-      jugador.agregarMadera(5)
-      estado = talado
+    self.validarCortar(jugador)
+    jugador.agregarMadera(5)
+    estado = talado
+    
+  }
+
+  method validarCortar(jugador) {
+    if(not jugador.tieneHerramientaQueCortaArbol()){
+      self.error("No tiene herramienta")
     }
   }
 
@@ -54,14 +62,21 @@ object sinTalar {
   method completarImagen() {
     return "sinTalarn"
   }
+
+
 }
 
 
 
 object bote {
-  method image() = "bote.png"
+
+  method image() = "boteRoto.png"
   
-  method position() = game.at(1, 2)
+  method position() = game.at(7, 0)
+
+  method interactuarConJugador(jugador) {
+    game.say(jugador, "Tengo Que Armar El bote")
+  }
 }
 
 object serrucho {
@@ -90,8 +105,8 @@ object serrucho {
   method position() = posicion
 }
 
-object pico {
-  method image() = "pico.png"
+object llave {
+  method image() = "llave.png"
 
   var posicion = self.positionOriginal() 
 

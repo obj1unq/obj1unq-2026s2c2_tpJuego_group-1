@@ -9,8 +9,8 @@ object jugador {
   var property nivelDeAgua = 20
   var inventario = []
   var property position = game.center()
-  var property madera = 0
-  var property hilo = 0
+  var madera = 0
+  var hilo = 0
   
   method madera() = madera
 
@@ -27,6 +27,10 @@ object jugador {
   
   method hiloActual() {
     return hilo
+  }
+
+  method sacarHilo() {
+    hilo = 0
   }
   
   method textColor() = "FF0000FF"
@@ -59,6 +63,10 @@ object jugador {
 
   method agregarMadera(cantidad) {
     madera += cantidad
+  }
+
+  method sacarMadera() {
+    madera = 0
   }
 
   method eliminarATodosDelInventario() {

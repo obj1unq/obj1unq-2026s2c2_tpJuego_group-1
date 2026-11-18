@@ -52,12 +52,14 @@ object controladorDeEscenas {
 object escenaDeInicio inherits Escena{
 
   override method interactuar() {
+    bote.reiniciarContadores()
     estadoDelDia.reiniciarDia()
     game.addVisual(serrucho)
     serrucho.volverAPosicion()
     game.addVisual(llave)
     llave.volverAPosicion()
     game.addVisual(telaDeAraña)
+    game.addVisual(new Madera())
     jugador.empezarPartida()
     game.addVisual(jugador)
     arbol1.reiniciarArbol()

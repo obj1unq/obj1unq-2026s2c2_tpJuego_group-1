@@ -54,13 +54,37 @@ object sinTalar {
 
 object bote {
 
+  const maderaNecesaria = 150
+  const hiloNecesario = 10
+  var maderaColocada = 0
+  var hiloColocado = 0
+  
+
   method image() = "boteRoto.png"
   
   method position() = game.at(7, 0)
 
   method interactuarConJugador(jugador) {
-    game.say(jugador, "Tengo Que Armar El bote. Madera Faltante: " + "2")
+    maderaColocada += jugador.madera()
+    hiloColocado += jugador.hiloActual()
+    jugador.sacarMadera()
+    jugador.sacarHilo()
+    game.say(self, "Madera Faltante: " + self.maderaFaltante().toString() + "Hilo Necesario: " + self.hiloFaltante())
   }
+
+  method maderaFaltante() {
+    return maderaNecesaria - maderaColocada
+  }
+
+  method hiloFaltante() {
+    return hiloNecesario - hiloColocado
+  }
+
+  method reiniciarContadores() {
+    maderaColocada = 0
+    hiloColocado = 0
+  }
+
 }
 
 

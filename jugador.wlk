@@ -13,8 +13,6 @@ object jugador {
   var property hilo = 0
   
   method madera() = madera
-  
-  //un solo metodo
 
   method consumirAgua(){
     const proximaAgua = nivelDeAgua-6
@@ -82,10 +80,6 @@ object jugador {
     position = direccion.siguiente(position)
   }
   
-/*   method colisionaCon(enemigo) {
-    vidaActualmente -= enemigo.dañoQueCausa()
-  } */
-  
   method image() = "Jugador.png"
 
   method tieneHerramientaQueCortaArbol() {
@@ -109,51 +103,80 @@ object jugador {
 
 //direcciones 
 //Poner Class
-object izquierdaJugador {
 
-    method siguiente(posicion) {
-        self.validarSiguiente(posicion)
-        return game.at(posicion.x() - 1 , posicion.y())
-    }
-    method validarSiguiente(posicion) {
-        if(posicion.x() == 0) {
-            self.error('No se puede mover a la izquierda')
-        }
-    }
-}
-object derechaJugador {
-    method siguiente(posicion) {
-        self.validarSiguiente(posicion)
-        return game.at(posicion.x() + 1 , posicion.y())
-    }
-    method validarSiguiente(posicion) {
-        if(posicion.x() == game.width() - 1 ) {
-          self.error("No se puede mover a la derecha")
-        }
-    }
-}
-object arribaJugador {
-    method siguiente(posicion) {
-        self.validarSiguiente(posicion)
-        return game.at(posicion.x(), (posicion.y() + 1) )
-    }
-    method validarSiguiente(posicion) {
-        if(posicion.y() == game.height() - 3) {
-          self.error('No se puede mover a la arriba')
-        }
-    }
-}
-object abajoJugador {
-    method siguiente(posicion) {
-        self.validarSiguiente(posicion)
-        return game.at(posicion.x(), (posicion.y() - 1))
-    }
+class Direccion{
     
-    method validarSiguiente(posicion) {
-        if(posicion.y() == 0 ) {
-            self.error('No se puede mover abajo')
-        }
+    method siguiente(posicion) {
+      self.validarSiguiente(posicion)
+      return game.at(self.movimientoEnX(posicion), self.movimientoEnY(posicion))
     }
 
+    method movimientoEnX(posicion)
+    method movimientoEnY(posicion)
+
+    method validarSiguiente(posicion) {
+      if(self.validacionSiguiente(posicion)) {
+        self.error('No se puede mover a la izquierda')
+      }
+    }
+
+    method validacionSiguiente(posicion)
+
+}
+
+object izquierdaJugador inherits Direccion{
+
+    override method movimientoEnX(posicion){
+      return posicion.x() - 1
+    }
+
+    override method movimientoEnY(posicion){
+      return posicion.y()
+    }
+
+    override method validacionSiguiente(posicion){
+      return posicion.x() == 0
+    }
+}
+object derechaJugador inherits Direccion{
+
+    override method movimientoEnX(posicion){
+      return posicion.x() + 1
+    }
+
+    override method movimientoEnY(posicion){
+      return posicion.y()
+    }
+
+    override method validacionSiguiente(posicion){
+      return posicion.x() == game.width() - 1
+    }    
+}
+object arribaJugador inherits Direccion{
+
+    override method movimientoEnX(posicion){
+      return posicion.x()
+    }
+
+    override method movimientoEnY(posicion){
+      return posicion.y() + 1
+    }
+
+    override method validacionSiguiente(posicion){
+      return posicion.y() == game.height() - 3
+    }        
+}
+object abajoJugador inherits Direccion{
+    override method movimientoEnX(posicion){
+      return posicion.x()
+    }
+
+    override method movimientoEnY(posicion){
+      return posicion.y() - 1
+    }
+
+    override method validacionSiguiente(posicion){
+      return posicion.y() == 0 
+    }   
 }
 

@@ -48,6 +48,8 @@ program PepitaGame {
 	constructorSerpiente.construir(300, game.at(4,10) )
 	constructorSerpiente.construir(300, game.at(3,10) )
 
+	
+
 
 	//SECTOR INTERFAZ
 	//game.addVisual(jugador)
@@ -84,6 +86,7 @@ program PepitaGame {
 
 	//MENUS
 	game.addVisual(controladorDeEscenas)
+	
 
 	game.start()
 }

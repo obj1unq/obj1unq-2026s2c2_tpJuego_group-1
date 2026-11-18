@@ -2,7 +2,7 @@ import jugador.*
 import wollok.game.*
 
 
-class Item { //Clase Super/General De todos los tipos de items
+class Item { //Clase Super-General De todos los tipos de items
     method image()
 
     method position()

@@ -59,7 +59,7 @@ object bote {
   method position() = game.at(7, 0)
 
   method interactuarConJugador(jugador) {
-    game.say(jugador, "Tengo Que Armar El bote")
+    game.say(jugador, "Tengo Que Armar El bote. Madera Faltante: " + "2")
   }
 }
 

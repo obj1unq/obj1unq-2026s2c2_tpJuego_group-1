@@ -24,7 +24,7 @@ program PepitaGame {
 	config.configurarEscenario()
 	game.addVisual(controladorDeDiaNoche)
 
-
+    
 	//game.onTick(20000, "cambirEstado", {=> controladorDeDiaNoche.cambiarEstado()})
 	//game.onTick(2000, "descontarAgua", {=> jugador.consumirAgua()})
 	
@@ -90,3 +90,8 @@ program PepitaGame {
 
 	game.start()
 }
+
+/*
+wollok run mainJuego.PepitaGame --skipValidations --port 4200
+
+*/

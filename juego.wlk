@@ -17,7 +17,7 @@ class Arbol {
 
   method interactuarConJugador(jugador) {
     self.validarCortar(jugador)
-    jugador.agregarMadera(5)
+    jugador.agregarMadera(45) //5
     estado = talado
     
   }
@@ -58,22 +58,26 @@ object bote {
   var maderaColocada = 0
   var hiloColocado = 0
   
+  var estadoActual = estadoSinMateriales
 
-  method image() = "boteRoto.png"
+  method image() = estadoActual.image()
   
   method position() = game.at(7, 0)
 
   method interactuarConJugador(jugador) {
-    maderaColocada += jugador.madera()
-    hiloColocado += jugador.hiloActual()
-    jugador.sacarMadera()
-    jugador.sacarHilo()
-    game.say(self, "Madera Faltante: " + self.maderaFaltante().toString() +
-     "Hilo Necesario: " + self.hiloFaltante())
+    estadoActual.interactuarConJugador(jugador)
   }
 
   method maderaFaltante() {
     return maderaNecesaria - maderaColocada
+  }
+
+  method agregarMadera(cant) {
+    maderaColocada += cant
+  }
+
+  method agregarHilo(cant) {
+    hiloColocado += cant
   }
 
   method hiloFaltante() {
@@ -85,9 +89,50 @@ object bote {
     hiloColocado = 0
   }
 
+  method hayLoNecesario() {
+    return (maderaColocada >= maderaNecesaria) && (hiloNecesario >= hiloNecesario)  
+  }
+
+  method cambiarEstado() {
+
+    estadoActual = estadoSinBrujula
+  }
+
 }
 
+object estadoSinMateriales {
 
+  method image() {
+    return "boteRoto.png"
+  }
+
+  method interactuarConJugador(jugador) {
+    if (bote.hayLoNecesario()){
+      bote.cambiarEstado()
+    }else{
+      bote.agregarMadera(jugador.madera())
+      bote.agregarHilo(jugador.hiloActual())
+      jugador.sacarMadera()
+      jugador.sacarHilo()
+      game.say(self, "Madera Faltante: " + bote.maderaFaltante().toString() +
+     "Hilo Necesario: " + bote.hiloFaltante()) 
+   }
+  }
+}
+
+object estadoSinBrujula {
+  method interactuarConJugador(jugador){
+    if (jugador.tieneBrujula()){
+      game.say(self, "JuegoTerminado")
+    }else{
+      game.say(self, "Necesitas La brujula para escapar")
+    }
+  }
+
+  method image() {
+    return "bote.png"
+  }
+}
 class Madera {
   method image() = "madera.png"
   

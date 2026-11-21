@@ -1,3 +1,4 @@
+import items.*
 import wollok.game.*
 import controlador.*
 import pantallas.*
@@ -96,6 +97,10 @@ object jugador {
 
   method tieneLlaveQueAbreCofre() {
     return inventario.any({item => item.puedeAbrirCofre()})
+  }
+
+  method tieneBrujula() {
+    return inventario.contains(brujula)
   }
   
   method vidaActualmente() = vidaActualmente

@@ -96,7 +96,7 @@ object brujula inherits ItemEquipable {
   override method posicionOriginalEnJuego() = game.at(6, 5)
 
   override method posicionEnInventario(){
-    return game.at(3, 2)
+    return game.at(1, 12)
   }
 
 }

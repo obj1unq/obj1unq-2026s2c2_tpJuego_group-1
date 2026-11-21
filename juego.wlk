@@ -1,3 +1,4 @@
+import items.*
 import jugador.*
 import wollok.game.*
 
@@ -7,9 +8,7 @@ import wollok.game.*
 
 class Arbol {
   var property estado = sinTalar
-  //const x = 0.randomUpTo(game.width()).truncate(0)
-  //const y = 0.randomUpTo(game.height()).truncate(0)
-  
+
   var property position = game.center() //game.center()
 
   
@@ -69,7 +68,8 @@ object bote {
     hiloColocado += jugador.hiloActual()
     jugador.sacarMadera()
     jugador.sacarHilo()
-    game.say(self, "Madera Faltante: " + self.maderaFaltante().toString() + "Hilo Necesario: " + self.hiloFaltante())
+    game.say(self, "Madera Faltante: " + self.maderaFaltante().toString() +
+     "Hilo Necesario: " + self.hiloFaltante())
   }
 
   method maderaFaltante() {
@@ -111,4 +111,25 @@ class Agua {
 const property aguaQueAporta = 5
 
 }
+
+object cofre {
+  method image() = "cofre.png"
+
+  method position() {
+    return game.at(5, 5)
+  }
+
+  method interactuarConJugador(jugador) {
+    if (jugador.tieneLlaveQueAbreCofre()){
+      game.say(self, "Me han abierto")
+      game.removeVisual(llave)
+      game.addVisual(brujula)
+      game.removeVisual(self)
+    }else{
+      game.say(self, "Necesitas La llave")
+    }
+  }
+}
+
+
 

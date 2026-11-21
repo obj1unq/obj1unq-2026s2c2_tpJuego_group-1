@@ -93,6 +93,10 @@ object jugador {
   method tieneHerramientaQueCortaArbol() {
     return inventario.any({item => item.puedeTalar()})
   }
+
+  method tieneLlaveQueAbreCofre() {
+    return inventario.any({item => item.puedeAbrirCofre()})
+  }
   
   method vidaActualmente() = vidaActualmente
 

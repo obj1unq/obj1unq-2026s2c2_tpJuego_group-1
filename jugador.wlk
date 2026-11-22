@@ -1,3 +1,4 @@
+import items.*
 import wollok.game.*
 import controlador.*
 import pantallas.*
@@ -9,8 +10,8 @@ object jugador {
   var property nivelDeAgua = 20
   var inventario = []
   var property position = game.center()
-  var property madera = 0
-  var property hilo = 0
+  var madera = 0
+  var hilo = 0
   
   method madera() = madera
 
@@ -27,6 +28,10 @@ object jugador {
   
   method hiloActual() {
     return hilo
+  }
+
+  method sacarHilo() {
+    hilo = 0
   }
   
   method textColor() = "FF0000FF"
@@ -61,6 +66,10 @@ object jugador {
     madera += cantidad
   }
 
+  method sacarMadera() {
+    madera = 0
+  }
+
   method eliminarATodosDelInventario() {
     inventario.clear()
     inventario.forEach({item => game.removeVisual(item)})
@@ -84,6 +93,14 @@ object jugador {
 
   method tieneHerramientaQueCortaArbol() {
     return inventario.any({item => item.puedeTalar()})
+  }
+
+  method tieneLlaveQueAbreCofre() {
+    return inventario.any({item => item.puedeAbrirCofre()})
+  }
+
+  method tieneBrujula() {
+    return inventario.contains(brujula)
   }
   
   method vidaActualmente() = vidaActualmente

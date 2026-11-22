@@ -136,6 +136,7 @@ object estadoNocheInicial inherits EstadoDia {
 
   override method realizarAccion(){
     estadoDelDia.cambiarEstado()
+    //game.addVisual(cofre)
     timerMurcielagos.start()
   }  
 }

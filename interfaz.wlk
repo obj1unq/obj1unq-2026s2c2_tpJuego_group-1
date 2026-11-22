@@ -63,7 +63,7 @@ object personajeHidratacion inherits PersonajeInformacion{
 object personajeHilo inherits PersonajeInformacion{
 
   override method valorAMostrar() {
-    return  jugador.hilo()
+    return  jugador.hiloActual()
   }
 
   override method posicionEnPantalla(){

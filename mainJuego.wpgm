@@ -24,7 +24,7 @@ program PepitaGame {
 	config.configurarEscenario()
 	game.addVisual(controladorDeDiaNoche)
 
-
+    
 	//game.onTick(20000, "cambirEstado", {=> controladorDeDiaNoche.cambiarEstado()})
 	//game.onTick(2000, "descontarAgua", {=> jugador.consumirAgua()})
 	
@@ -70,7 +70,7 @@ program PepitaGame {
 	game.addVisual(arbol2)
 	game.addVisual(arbol3)
 	const agua1 = new Agua()
-	game.addVisual(new Madera())
+	game.addVisual(cofre)
 	game.addVisual(agua1)
 	game.addVisual(bote)
 	//SECTOR COSAS DEL MAPA
@@ -86,7 +86,14 @@ program PepitaGame {
 
 	//MENUS
 	game.addVisual(controladorDeEscenas)
+
 	
 
 	game.start()
 }
+
+/*
+COMANDO SI NO ANDA LA TERMINAL
+wollok run mainJuego.PepitaGame --skipValidations --port 4200
+
+*/

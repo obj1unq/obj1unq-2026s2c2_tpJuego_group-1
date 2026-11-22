@@ -52,6 +52,8 @@ object controladorDeEscenas {
 object escenaDeInicio inherits Escena{
 
   override method interactuar() {
+    game.addVisual(new Madera())
+    bote.reiniciarContadores()
     estadoDelDia.reiniciarDia()
     game.addVisual(serrucho)
     serrucho.volverAPosicion()

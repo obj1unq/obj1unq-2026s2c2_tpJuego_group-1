@@ -19,6 +19,10 @@ class ItemEquipable inherits Item{ //Clase Particular de item que es equipable p
     return false
   }
 
+  method puedeAbrirCofre() {
+    return false
+  }
+
   override method position() {
     return posicion
   }
@@ -77,4 +81,22 @@ object llave inherits ItemEquipable{
   override method posicionOriginalEnJuego() {
     return game.at(3, 2)
   }
+
+  override method puedeAbrirCofre() {
+    return true
+  }
+
+}
+
+object brujula inherits ItemEquipable {
+  
+  override method image() = "brujula.png"
+
+ 
+  override method posicionOriginalEnJuego() = game.at(6, 5)
+
+  override method posicionEnInventario(){
+    return game.at(1, 12)
+  }
+
 }

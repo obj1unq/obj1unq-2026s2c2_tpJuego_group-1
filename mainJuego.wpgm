@@ -70,7 +70,6 @@ program PepitaGame {
 	game.addVisual(arbol2)
 	game.addVisual(arbol3)
 	const agua1 = new Agua()
-	game.addVisual(cofre)
 	game.addVisual(agua1)
 	game.addVisual(bote)
 	//SECTOR COSAS DEL MAPA

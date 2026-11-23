@@ -29,6 +29,10 @@ object controladorDeEscenas {
   }
 
   method jugadorAMuerto(pantalla) {
+
+    creadorDeMurcielagos.sacarTodosLosMurcielagos() //Por ahora
+    game.removeVisual(brujula) //por ahora
+    game.removeVisual(cofre)
     game.removeVisual(telaDeAraña) //Elimino loss objetos del inventario
     game.removeVisual(serrucho)
     game.removeVisual(llave)
@@ -47,6 +51,17 @@ object controladorDeEscenas {
   method cambiarAEscenaDeJuego() {
     escenaActual = escenaJugable
   }
+
+  method cambiarAVictoria() {
+    game.removeVisual(serrucho)
+    game.removeVisual(brujula)
+    game.removeVisual(jugador)
+    timerDiaYNoche.stop()
+    timerDesidratacion.stop()
+    timerMurcielagos.stop()
+    escenaActual = escenaDeVictoria
+    
+  }
 }
 
 object escenaDeInicio inherits Escena{
@@ -56,6 +71,7 @@ object escenaDeInicio inherits Escena{
     bote.reiniciarContadores()
     estadoDelDia.reiniciarDia()
     game.addVisual(serrucho)
+    game.addVisual(cofre)
     serrucho.volverAPosicion()
     game.addVisual(llave)
     llave.volverAPosicion()
@@ -93,6 +109,21 @@ object escenaDeMuerte inherits Escena{
 
   method imagen() {
     return "pantallaDeMuerte.png"
+  }
+
+}
+
+object escenaDeVictoria inherits Escena{
+
+  override method interactuar() {
+    timerDiaYNoche.stop()
+    timerDesidratacion.stop()
+    timerMurcielagos.stop()
+    controladorDeEscenas.cambiarA(escenaDeInicio)
+  }
+
+  method imagen() {
+    return "victoria.jpg"
   }
 
 }

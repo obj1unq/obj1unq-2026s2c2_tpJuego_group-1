@@ -1,5 +1,7 @@
 import items.*
 import jugador.*
+import pantallas.*
+
 import wollok.game.*
 
 
@@ -17,9 +19,11 @@ class Arbol {
 
   method interactuarConJugador(jugador) {
     self.validarCortar(jugador)
-    jugador.agregarMadera(45) //5
-    estado = talado
+    if(estado.puedeTalar()){
+      jugador.agregarMadera(45) //5
+      estado = talado
     
+    }
   }
 
   method validarCortar(jugador) {
@@ -35,6 +39,10 @@ class Arbol {
 
 object talado {
 
+  method puedeTalar() {
+    return false
+  }
+
   method completarImagen() {
     return "taladon"
   }  
@@ -42,6 +50,11 @@ object talado {
 }
 
 object sinTalar {
+
+  method puedeTalar() {
+    return true
+  }
+
   method completarImagen() {
     return "sinTalarn"
   }
@@ -53,8 +66,8 @@ object sinTalar {
 
 object bote {
 
-  const maderaNecesaria = 150
-  const hiloNecesario = 10
+  const maderaNecesaria = 100 //cambiar
+  const hiloNecesario = 1 //cambiar
   var maderaColocada = 0
   var hiloColocado = 0
   
@@ -87,6 +100,7 @@ object bote {
   method reiniciarContadores() {
     maderaColocada = 0
     hiloColocado = 0
+    estadoActual = estadoSinMateriales
   }
 
   method hayLoNecesario() {
@@ -114,7 +128,7 @@ object estadoSinMateriales {
       bote.agregarHilo(jugador.hiloActual())
       jugador.sacarMadera()
       jugador.sacarHilo()
-      game.say(self, "Madera Faltante: " + bote.maderaFaltante().toString() +
+      game.say(bote, "Madera Faltante: " + bote.maderaFaltante().toString() +
      "Hilo Necesario: " + bote.hiloFaltante()) 
    }
   }
@@ -123,9 +137,9 @@ object estadoSinMateriales {
 object estadoSinBrujula {
   method interactuarConJugador(jugador){
     if (jugador.tieneBrujula()){
-      game.say(self, "JuegoTerminado")
+      controladorDeEscenas.cambiarAVictoria()
     }else{
-      game.say(self, "Necesitas La brujula para escapar")
+      game.say(bote, "Necesitas La brujula para escapar")
     }
   }
 

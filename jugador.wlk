@@ -1,3 +1,4 @@
+import juego.*
 import items.*
 import wollok.game.*
 import controlador.*
@@ -58,7 +59,6 @@ object jugador {
     vidaActualmente = 0
     game.removeVisual(self)
     self.eliminarATodosDelInventario()
-    creadorDeMurcielagos.sacarTodosLosMurcielagos() //Por ahora
     controladorDeEscenas.jugadorAMuerto(escenaDeMuerte)
   }
 
